@@ -6,13 +6,27 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-navigation">
+          <h1 className="App-title">Fetchr</h1>
+          <Link to="/">Splash</Link>
+          <Link to="/sign-up/">Sign Up</Link>
+          <Link to="/sign-in/">Sign In</Link>
+          <Link to="/user-page/">My Info.</Link>
+          <Link to="/browse/">Find a Friend</Link>
+        </div>
+
+        <div className="App-mainContent">
+
+          <Switch>
+            <Route exact path='/' component={Splash} />
+            <Route exact path='/sign-up/' component={SignUp} />
+            <Route exact path='/sign-in/' component={SignIn} />
+            <Route exact path='/user-page/' component={UserPage} />
+            <Route path="/browse/" component={Browse} />
+          </Switch>
+
+        </div>
+
       </div>
     );
   }
