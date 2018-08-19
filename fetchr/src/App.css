@@ -1,28 +1,15 @@
-.App {
-  text-align: center;
+/* css variables for colors used: */
+:root{
+  /* Background colors */
+  --green: #B8E0D2;
+  --light-green: #D6EADF;
+  --white: #FCFAFA;
+  --sky-blue: #95B8D1;
+  --yellow-green: #DEF2C8;
+  
+  /* Text colors */
+  --dark-blue: #246A73;
+  --dark-green: #007755;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* styled page according to BEM */
