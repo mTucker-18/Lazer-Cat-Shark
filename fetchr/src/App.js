@@ -13,20 +13,16 @@ class App extends Component {
   render() {
     return (
       <div className=".App">
-
         <div className=".App-navigation">
-
           <h1 className=".App-title">Fetchr</h1>
           <Link to="/">Splash</Link>
           <Link to="/sign-up/">Sign Up</Link>
           <Link to="/sign-in/">Sign In</Link>
           <Link to="/user-page/">My Info.</Link>
           <Link to="/browse/">Find a Friend</Link>
-          
         </div>
 
         <div className="App-mainContent">
-
           <Switch>
             <Route exact path='/' component={Splash} />
             <Route exact path='/sign-up/' component={SignUp} />
@@ -36,7 +32,6 @@ class App extends Component {
           </Switch>
 
         </div>
-
       </div>
     );
   }
