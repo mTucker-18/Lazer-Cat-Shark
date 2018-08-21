@@ -10,6 +10,11 @@ import UserPage from './Components/UserPage/UserPage.js';
 import Browse from './Components/Browse/Browse.js';
 
 class App extends Component {
+  state = {
+    name: '',
+    email: '',
+    password: '',
+  }
   render() {
     return (
       <div className=".App">
@@ -25,7 +30,7 @@ class App extends Component {
         <div className="App-mainContent">
           <Switch>
             <Route exact path='/' component={Splash} />
-            <Route exact path='/sign-up/' component={SignUp} />
+            <Route exact path='/sign-up/' username={this.state.name} email={this.state.email} password={this.state.password} component={SignUp} />
             <Route exact path='/sign-in/' component={SignIn} />
             <Route exact path='/user-page/' component={UserPage} />
             <Route path="/browse/" component={Browse} />

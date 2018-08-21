@@ -28,24 +28,25 @@ class SignUp extends Component {
     return (
       <div className=".SignUp">
         <h1>Welcome</h1>
-        <h2>Name: {this.state.name}</h2>
+        <h2>Name: {this.props.username}</h2>
         <input
             placeholder="Enter your name"
-            value={this.state.name}
+            value={this.props.username}
             onChange={this.onNameChange}
+            // console.log(value)
           />
 
-          <h2>Name: {this.state.emails}</h2>
+          <h2>Email: {this.props.email}</h2>
           <input
               placeholder="Enter your name"
-              value={this.state.email}
+              value={this.props.email}
               onChange={this.onEmailChange}
             />
 
-            <h2>Name: {this.state.name}</h2>
+            <h2>Password: {this.props.name}</h2>
           <input
                 placeholder="Enter your name"
-                value={this.state.password}
+                value={this.props.password}
                 onChange={this.onPasswordChange}
               />
         <button>Sign Up</button>
