@@ -22,7 +22,7 @@ class App extends Component {
           <Link to="/sign-in/">Sign In</Link>
           <Link to="/user-page/">My Info.</Link>
           <Link to="/browse/">Find a Friend</Link>
-          
+
         </div>
 
         <div className="App-mainContent">
