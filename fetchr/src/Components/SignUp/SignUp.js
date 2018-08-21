@@ -6,7 +6,7 @@ class SignUp extends Component {
     this.setState({
       name: value,
     });
-    console.log('getting a new value:', value);
+    console.log('getting a new name:', value);
   }
 
   onEmailChange = (ev) => {
@@ -14,7 +14,7 @@ class SignUp extends Component {
     this.setState({
       email: value,
     });
-    console.log('getting a new value:', value);
+    console.log('getting a new email:', value);
   }
 
   onPasswordChange = (ev) => {
@@ -22,7 +22,7 @@ class SignUp extends Component {
     this.setState({
       password: value,
     });
-    console.log('getting a new position:', value);
+    console.log('getting a new password:', value);
   }
   render() {
     return (
@@ -38,14 +38,14 @@ class SignUp extends Component {
 
           <h2>Email: {this.props.email}</h2>
           <input
-              placeholder="Enter your name"
+              placeholder="Enter your email"
               value={this.props.email}
               onChange={this.onEmailChange}
             />
 
             <h2>Password: {this.props.name}</h2>
           <input
-                placeholder="Enter your name"
+                placeholder="Enter your password"
                 value={this.props.password}
                 onChange={this.onPasswordChange}
               />
