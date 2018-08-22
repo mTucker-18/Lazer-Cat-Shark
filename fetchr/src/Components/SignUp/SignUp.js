@@ -27,13 +27,12 @@ class SignUp extends Component {
   render() {
     return (
       <div className=".SignUp">
-        <h1>Welcome</h1>
+        <h1>Join us to find friends for your doggos!</h1>
         <h2>Name: {this.props.username}</h2>
         <input
             placeholder="Enter your name"
             value={this.props.username}
             onChange={this.onNameChange}
-            // console.log(value)
           />
 
           <h2>Email: {this.props.email}</h2>
