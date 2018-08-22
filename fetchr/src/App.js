@@ -31,7 +31,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Splash} />
             <Route exact path='/sign-up/' username={this.state.name} email={this.state.email} password={this.state.password} component={SignUp} />
-            <Route exact path='/sign-in/' component={SignIn} />
+            <Route exact path='/sign-in/' email={this.state.email} password={this.state.password} component={SignIn} />
             <Route exact path='/user-page/' component={UserPage} />
             <Route path="/browse/" component={Browse} />
           </Switch>
