@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import './SignIn.css';
 class SignIn extends Component {
+  state = {
+    emails: '',
+    password: '',
+  }
+  onEmailChange = (ev) => {
+    let value = ev.target.value;
+    this.setState({
+      email: value,
+    });
+    console.log('getting a new email:', value);
+  }
+
+  onPasswordChange = (ev) => {
+    let value = ev.target.value;
+    this.setState({
+      password: value,
+    });
+    console.log('getting a new password:', value);
+  }
   render() {
     return (
-      <div className=".SignIn">
+      <div className="SignIn">
         <h1>Woof, Welcome Back!</h1>
           <h2>Email: {this.props.email}</h2>
           <input

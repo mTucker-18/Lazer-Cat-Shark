@@ -11,9 +11,20 @@ import Browse from './Components/Browse/Browse.js';
 
 class App extends Component {
   state = {
-    name: '',
-    email: '',
-    password: '',
+    human : {
+      searchRadius: '',
+      name: '',
+      email: '',
+      password: '',
+      address:'',
+      bio: '',
+    },
+    doggos : {
+      name: '',
+      size: '',
+      energyLevel: '',
+      bio: '',
+    }
   }
   render() {
     return (
@@ -29,9 +40,30 @@ class App extends Component {
         <div className="App-mainContent">
           <Switch>
             <Route exact path='/' component={Splash} />
-            <Route exact path='/sign-up/' username={this.state.name} email={this.state.email} password={this.state.password} component={SignUp} />
-            <Route exact path='/sign-in/' email={this.state.email} password={this.state.password} component={SignIn} />
-            <Route exact path='/user-page/' component={UserPage} />
+            <Route exact path='/sign-up/' render={(props) =>
+                 <SignUp {...props}
+                   username={this.state.name}
+                   email={this.state.email}
+                   password={this.state.password} />
+            } />
+            <Route exact path='/sign-in/' render={(props) =>
+                 <SignIn {...props}
+                   email={this.state.email}
+                   password={this.state.password} />
+            } />
+            <Route exact path='/user-page/' render={(props) =>
+                 <UserPage {...props}
+                   searchRadius={this.state.searchRadius}
+                   name={this.state.name}
+                   email={this.state.email}
+                   password={this.state.password}
+                   address={this.state.address}
+                   bio={this.state.bio}
+                   dogName={this.state.dogName}
+                   size={this.state.size}
+                   energyLevel={this.state.energyLevel}
+                   dogBio={this.state.dogBio} />
+            } />
             <Route path="/browse/" component={Browse} />
           </Switch>
         </div>
