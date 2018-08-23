@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './UserPage.css';
+
 class UserPage extends Component {
   state = {
     human : {
@@ -93,6 +95,15 @@ class UserPage extends Component {
       <div className="UserPage">
         <h1>User Page</h1>
         <div className="Human">
+          <div className="Navigation">
+            <Link to="/browse/">
+              <button>Find a Friend!</button>
+            </Link>
+
+            <Link to="/">
+              <button>Log Out</button>
+            </Link>
+          </div>
           <div className="Image">
             <p>Will have some image here</p>
           </div>
