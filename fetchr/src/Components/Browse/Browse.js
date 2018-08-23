@@ -4,7 +4,7 @@ import './Browse.css';
 class Browse extends Component {
   render() {
     return (
-      <div className=".Browse">
+      <div className="Browse">
         <h1>Find a pup!</h1>
         <p>(Puppy and Person info. here.)</p>
         <button>User Page</button>

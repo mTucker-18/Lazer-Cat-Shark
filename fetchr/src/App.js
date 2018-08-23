@@ -17,9 +17,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div className=".App">
-        <div className=".App-navigation">
-          <h1 className=".App-title">Fetchr</h1>
+      <div className="App">
+        <div className="App-navigation">
           <Link to="/">Splash</Link>
           <Link to="/sign-up/">Sign Up</Link>
           <Link to="/sign-in/">Sign In</Link>
@@ -35,7 +34,6 @@ class App extends Component {
             <Route exact path='/user-page/' component={UserPage} />
             <Route path="/browse/" component={Browse} />
           </Switch>
-
         </div>
       </div>
     );
