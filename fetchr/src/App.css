@@ -14,10 +14,18 @@
 
 /* styled page according to BEM */
 .App {
-  background-color: var(--light-green);
-  color: var(--dark-green)
+  background: var(--light-green);
+  display: grid;
+  grid-template-columns: 200px, auto, 200px;
+  grid-template-rows: 100px, auto, 200px;
 }
 
-.App-title {
-  color: var(--dark-blue);
+.App-navigation {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.App-mainContent {
+  grid-column: 2;
+  grid-row: 2;
 }
