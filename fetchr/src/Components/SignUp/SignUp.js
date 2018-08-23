@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './SignUp.css';
 class SignUp extends Component {
+  state = {
+    name: '',
+    emails: '',
+    password: '',
+  }
   onNameChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -26,7 +31,7 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <div className=".SignUp">
+      <div className="SignUp">
         <h1>Join us to find friends for your doggos!</h1>
         <h2>Name: {this.props.username}</h2>
         <input
