@@ -12,17 +12,21 @@
   --dark-green: #007755;
 }
 
+
 /* styled page according to BEM */
 .App {
   background: var(--light-green);
   display: grid;
-  grid-template-columns: 200px, auto, 200px;
-  grid-template-rows: 100px, auto, 200px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 50% 1fr;
+  font-family: 'Lobster', cursive;
+  text-align: center;
 }
 
 .App-navigation {
   grid-column: 2;
   grid-row: 1;
+  padding: 20px;
 }
 
 .App-mainContent {

@@ -1,4 +1,8 @@
 .Splash {
-  background-color: var(--green);
+  background: var(--light-green);
   color: var(--dark-blue);
+}
+
+h1 {
+
 }

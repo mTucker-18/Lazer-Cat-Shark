@@ -17,8 +17,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div className=".App" >
-        <div className=".App-navigation">
+      <div className="App">
+        <div className="App-navigation">
           <Link to="/">Splash</Link>
           <Link to="/sign-up/">Sign Up</Link>
           <Link to="/sign-in/">Sign In</Link>
@@ -26,7 +26,7 @@ class App extends Component {
           <Link to="/browse/">Find a Friend</Link>
         </div>
 
-        <div className=".App-mainContent">
+        <div className="App-mainContent">
           <Switch>
             <Route exact path='/' component={Splash} />
             <Route exact path='/sign-up/' username={this.state.name} email={this.state.email} password={this.state.password} component={SignUp} />
@@ -34,7 +34,6 @@ class App extends Component {
             <Route exact path='/user-page/' component={UserPage} />
             <Route path="/browse/" component={Browse} />
           </Switch>
-
         </div>
       </div>
     );

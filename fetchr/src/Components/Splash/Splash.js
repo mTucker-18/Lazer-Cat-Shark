@@ -4,8 +4,8 @@ import './Splash.css';
 class Splash extends Component {
   render() {
     return (
-      <div className=".Splash">
-        <h1>Fetchr</h1>
+      <div className="Splash">
+        <h1>fetchr</h1>
         <p>Connecting dogs and dog lovers</p>
         <button>Sign In</button>
         <button>Sign Up</button>
