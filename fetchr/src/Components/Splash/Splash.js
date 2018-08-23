@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import './Splash.css';
 
 class Splash extends Component {
@@ -7,8 +8,19 @@ class Splash extends Component {
       <div className="Splash">
         <h1>fetchr</h1>
         <p>Connecting dogs and dog lovers</p>
-        <button>Sign In</button>
-        <button>Sign Up</button>
+
+        <Link to="/sign-up/">
+          <button>
+            Sign Up
+          </button>
+        </Link>
+
+        <Link to="/sign-in/">
+          <button>
+            Sign In
+          </button>
+        </Link>
+
       </div>
     );
   }
