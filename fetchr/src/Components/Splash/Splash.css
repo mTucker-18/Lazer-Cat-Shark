@@ -1,13 +1,24 @@
-.Splash {
+.App {
+  background-image: url("../../media/dogs_playing_new.png");
+  background-size: cover;
   background-color: var(--green);
   color: var(--dark-blue);
 }
 
-.Splash--image {
-  background-image: url("../../media/dogs_playing.jpg");
-  width: screenWidth;
-  height: screenHeight;
-  position: 'absolute';
-  top: 0;
-  left: 0;
+.Splash--title {
+  font-size: 900%;
+  position: relative;
+  text-shadow: -4px 0 white, 0 4px white, 4px 0 white, 0 -4px white;
+}
+
+.Splash--slogan {
+  font-size: 500%;
+  position: relative;
+}
+
+.Button {
+  font-family: inherit;
+  color: var(--dark-blue);
+  font-size: 150%;
+  padding: 50px;
 }
