@@ -12,12 +12,24 @@
   --dark-green: #007755;
 }
 
+
 /* styled page according to BEM */
 .App {
-  background-color: var(--light-green);
-  color: var(--dark-green)
+  background: var(--green);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 50% 1fr;
+  font-family: 'Lobster', cursive;
+  text-align: center;
 }
 
-.App-title {
-  color: var(--dark-blue);
+.App-navigation {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 20px;
+}
+
+.App-mainContent {
+  grid-column: 2;
+  grid-row: 2;
 }

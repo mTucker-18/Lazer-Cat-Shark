@@ -1,4 +1,14 @@
 .Splash {
+
   background-color: var(--green);
   color: var(--dark-blue);
+}
+
+.Splash--image {
+  background-image: url("../../media/dogs_playing.jpg");
+  width: screenWidth;
+  height: screenHeight;
+  position: 'absolute';
+  top: 0;
+  left: 0;
 }
