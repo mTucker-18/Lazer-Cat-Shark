@@ -17,6 +17,21 @@ app.get('/', (req, res) => {
     });
 });
 
+app.post('/sign-up', (req, res) => {
+  let data = {
+    email: req.body.email,
+    password: req.body.password,
+    human_name: req.body.human_name
+  };
+  db.collection('users').insertOne(data, (err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.json(data);
+  });
+});
+
+
+
 const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
 const MONGODB_DATABASE = 'fetchr';
 const PORT = 3001;
