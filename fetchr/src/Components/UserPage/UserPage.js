@@ -94,92 +94,118 @@ class UserPage extends Component {
     return (
       <div className="UserPage">
         <h1>User Page</h1>
-        <div className="Human">
-          <div className="Navigation">
-            <Link to="/browse/">
-              <button>Find a Friend!</button>
-            </Link>
 
-            <Link to="/">
-              <button>Log Out</button>
-            </Link>
-          </div>
+        <div className="Navigation">
+
+          <Link to="/browse/">
+            <button>Find a Friend!</button>
+          </Link>
+
+          <Link to="/">
+            <button>Log Out</button>
+          </Link>
+
+        </div>
+
+        <div className="Human">
+
           <div className="Image">
             <p>Will have some image here</p>
           </div>
-          <div className="TextField">
-            <h2>Search Radius: {this.props.searchRadius}</h2>
-              <input
-                  placeholder="Enter your search radius"
-                  value={this.props.searchRadius}
-                  onChange={this.onSearchRadiusChange}
-                />
 
-              <h2>Name: {this.props.username}</h2>
-            <input
-                placeholder="Enter your name"
+          <div className="TextField">
+            <h2>Search Radius: {this.props.searchRadius}
+              <input
+                placeholder="Enter your search radius"
+                value={this.props.searchRadius}
+                onChange={this.onSearchRadiusChange}
+              />
+            </h2>
+
+            <h2>Name: {this.props.username}
+              <input
+                placeholder="Enter name"
                 value={this.props.username}
                 onChange={this.onNameChange}
               />
+            </h2>
 
-            <h2>Email: {this.props.email}</h2>
-            <input
-                placeholder="Enter your email"
+            <h2>Email: {this.props.email}
+              <input
+                placeholder="Enter email"
                 value={this.props.email}
                 onChange={this.onEmailChange}
               />
+            </h2>
 
-            <h2>Password: {this.props.name}</h2>
-          <input
-                placeholder="Enter your password"
+            <h2>Password: {this.props.name}
+              <input
+                placeholder="Enter password"
                 value={this.props.password}
                 onChange={this.onPasswordChange}
               />
+            </h2>
 
-            <h2>Address: {this.props.address}</h2>
-          <input
-                placeholder="Enter your address"
+            <h2>Address: {this.props.address}
+              <input
+                placeholder="Enter address"
                 value={this.props.address}
                 onChange={this.onAddressChange}
               />
-            <h2>Bio: {this.props.bio}</h2>
-          <input
+            </h2>
+
+
+            <h2>Bio: {this.props.bio}
+              <input
                 placeholder="Tell us about yourself"
                 value={this.props.bio}
                 onChange={this.onBioChange}
               />
+            </h2>
+
           </div>
         </div>
+
+        <hr />
+
         <div className="Doggos">
+
           <div className="Image">
             <p>Will have some image here</p>
           </div>
+
           <div className="TextField">
-            <h2>Name: {this.props.dogName}</h2>
-          <input
+            <h2>Name: {this.props.dogName}
+              <input
                 placeholder="Enter your password"
                 value={this.props.dogName}
                 onChange={this.ondogNameChange}
               />
+            </h2>
 
-            <h2>Size: {this.props.size}</h2>
-          <input
+            <h2>Size: {this.props.size}
+              <input
                 placeholder="Choose your doggy size"
                 value={this.props.size}
                 onChange={this.onSizeChange}
               />
-            <h2>Energy Level: {this.props.energy}</h2>
-          <input
+            </h2>
+
+            <h2>Energy Level: {this.props.energy}
+              <input
                 placeholder="What's your doggys energy level"
                 value={this.props.energyLevel}
                 onChange={this.onEnergyLevelChange}
               />
-            <h2>Bio: {this.props.dogBio}</h2>
-          <input
+            </h2>
+
+            <h2>Bio: {this.props.dogBio}
+              <input
                 placeholder="Tell us a little bit about your dog"
                 value={this.props.dogBio}
                 onChange={this.ondogBioChange}
               />
+            </h2>
           </div>
         </div>
 

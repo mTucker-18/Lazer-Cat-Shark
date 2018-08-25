@@ -6,6 +6,7 @@ class Splash extends Component {
   render() {
     return (
       <div className="Splash">
+
         <h1 className="Splash--title">fetchr</h1>
         <p className="Splash--slogan">connecting dogs and dog lovers</p>
         <div>
@@ -15,6 +16,7 @@ class Splash extends Component {
             </button>
           </Link>
         </div>
+
         <div>
           <Link to="/sign-in/">
             <button className="Button">
@@ -22,6 +24,7 @@ class Splash extends Component {
             </button>
           </Link>
         </div>
+        
       </div>
     );
   }
