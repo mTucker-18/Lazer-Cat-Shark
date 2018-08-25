@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SignUp.css';
+import Button from '../Button/button.js';
 class SignUp extends Component {
   state = {
     name: '',
@@ -56,7 +57,7 @@ class SignUp extends Component {
                 value={this.props.password}
                 onChange={this.onPasswordChange}
               />
-        <button>Sign Up</button>
+            <Button>Sign Up</Button>
       </div>
     );
   }
