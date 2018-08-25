@@ -35,6 +35,7 @@ class SignUp extends Component {
         <h1>Join us to find friends for your doggos!</h1>
         <h2>Name: {this.props.username}</h2>
         <input
+            name="human_name"
             placeholder="Enter your name"
             value={this.props.username}
             onChange={this.onNameChange}
@@ -42,6 +43,7 @@ class SignUp extends Component {
 
           <h2>Email: {this.props.email}</h2>
           <input
+              name="email"
               placeholder="Enter your email"
               value={this.props.email}
               onChange={this.onEmailChange}
@@ -49,6 +51,7 @@ class SignUp extends Component {
 
             <h2>Password: {this.props.name}</h2>
           <input
+                name="password"
                 placeholder="Enter your password"
                 value={this.props.password}
                 onChange={this.onPasswordChange}
