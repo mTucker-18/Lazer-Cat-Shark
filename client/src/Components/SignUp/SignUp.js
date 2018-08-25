@@ -3,16 +3,36 @@ import './SignUp.css';
 class SignUp extends Component {
   state = {
     name: '',
-    emails: '',
+    email: '',
     password: '',
   }
-  onSubmit = (url = '/sign-up', data = {}) => {
-    return fetch(url, {
+
+  // adderFunction = (a = 3, b = 5) => {
+  //   console.log(a + b);
+  // }
+
+  onSubmit = () => {
+    // this.adderFunction();
+    // this.adderFunction(10);
+    // this.adderFunction(10, 20);
+    //
+    const url = '/sign-up';
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+    };
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(data)
     })
-    .then(console.log(data));
+    .then(console.log("data", data))
+    .then(response => response.json())
+    .then(responseData => {
+      console.log("DATAMEOW", responseData)
+    });
   }
+
   onNameChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -56,7 +76,7 @@ class SignUp extends Component {
               onChange={this.onEmailChange}
             />
 
-            <h2>Password: {this.props.name}</h2>
+            <h2>Password: {this.props.password}</h2>
           <input
                 name="password"
                 placeholder="Enter your password"
