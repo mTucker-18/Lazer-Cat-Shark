@@ -6,6 +6,13 @@ class SignUp extends Component {
     emails: '',
     password: '',
   }
+  onSubmit = (url = '/sign-up', data = {}) => {
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(console.log(data));
+  }
   onNameChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -56,7 +63,7 @@ class SignUp extends Component {
                 value={this.props.password}
                 onChange={this.onPasswordChange}
               />
-        <button>Sign Up</button>
+        <button onClick={this.onSubmit}>Sign Up</button>
       </div>
     );
   }
