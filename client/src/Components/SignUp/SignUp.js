@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SignUp.css';
+import Button from '../Button/button.js';
 class SignUp extends Component {
   state = {
     name: '',
