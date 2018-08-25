@@ -1,0 +1,27 @@
+.UserPage {
+  display: grid;
+}
+
+.Navigation {
+
+}
+
+.Human {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1;
+}
+
+.Doggos {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 1;
+}
+
+.Image {
+  grid-column: 1;
+}
+
+.TextField {
+  grid-column: 2;
+}
