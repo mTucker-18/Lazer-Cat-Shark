@@ -107,6 +107,8 @@ class UserPage extends Component {
 
         </div>
 
+        <h2>Human Info.</h2>
+
         <div className="Human">
 
           <div className="Image">
@@ -167,6 +169,8 @@ class UserPage extends Component {
         </div>
 
         <hr />
+
+        <h2>Dog Info.</h2>
 
         <div className="Doggos">
 
