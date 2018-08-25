@@ -42,17 +42,18 @@ class App extends Component {
               email={this.state.email}
               password={this.state.password} />
           } />
-          <Route exact path='/user-page/' render={(props) =>                 <UserPage {...props}
-            searchRadius={this.state.searchRadius}
-            name={this.state.name}
-            email={this.state.email}
-            password={this.state.password}
-            address={this.state.address}
-            bio={this.state.bio}
-            dogName={this.state.dogName}
-            size={this.state.size}
-            energyLevel={this.state.energyLevel}
-            dogBio={this.state.dogBio} />
+          <Route exact path='/user-page/' render={(props) =>
+            <UserPage {...props}
+              searchRadius={this.state.searchRadius}
+              name={this.state.name}
+              email={this.state.email}
+              password={this.state.password}
+              address={this.state.address}
+              bio={this.state.bio}
+              dogName={this.state.dogName}
+              size={this.state.size}
+              energyLevel={this.state.energyLevel}
+              dogBio={this.state.dogBio} />
           } />
             <Route path="/browse/" component={Browse} />
           </Switch>
