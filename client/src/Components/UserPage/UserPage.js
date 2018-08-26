@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './UserPage.css';
+import Button from '../Button/button.js';
 
 class UserPage extends Component {
   state = {
@@ -98,14 +99,16 @@ class UserPage extends Component {
         <div className="Navigation">
 
           <Link to="/browse/">
-            <button>Find a Friend!</button>
+            <Button>Find a Friend!</Button>
           </Link>
 
           <Link to="/">
-            <button>Log Out</button>
+            <Button>Log Out</Button>
           </Link>
 
         </div>
+
+        <h2>Human Info.</h2>
 
         <div className="Human">
 
@@ -168,6 +171,8 @@ class UserPage extends Component {
 
         <hr />
 
+        <h2>Dog Info.</h2>
+
         <div className="Doggos">
 
           <div className="Image">
@@ -206,6 +211,7 @@ class UserPage extends Component {
                 onChange={this.ondogBioChange}
               />
             </h2>
+              <Button>Save</Button>
           </div>
         </div>
 
