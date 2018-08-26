@@ -23,7 +23,6 @@ class SignUp extends Component {
       },
       body: JSON.stringify(data)
     })
-    .then(console.log("data", data))
     .then(response => response.json())
     .then(responseData => {
       console.log("DATAMEOW", responseData)

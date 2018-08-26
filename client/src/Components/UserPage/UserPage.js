@@ -10,7 +10,7 @@ class UserPage extends Component {
       name: '',
       email: '',
       password: '',
-      address:'1600 Amphitheatre Parkway,Mountain View',
+      address:'',
       bio: '',
     },
     doggos : {
