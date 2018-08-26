@@ -10,7 +10,7 @@ class UserPage extends Component {
       name: '',
       email: '',
       password: '',
-      address:'',
+      address:'1600 Amphitheatre Parkway,Mountain View',
       bio: '',
     },
     doggos : {
@@ -57,7 +57,11 @@ class UserPage extends Component {
     console.log('getting a new address:', value);
   }
   onGeoAddress = () => {
-    fetch("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc")
+  
+  let addressWithPlusSigns = this.state.human.address.replace(/ /g, '+');
+  
+  
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}+CA&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
     .then(response => response.json())
     .then(data => {
       console.log("got data", data);
