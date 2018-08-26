@@ -29,36 +29,34 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-mainContent">
-          <Switch>
-            <Route exact path='/' component={Splash} />
-            <Route exact path='/sign-up/' render={(props) =>
-                 <SignUp {...props}
-                   username={this.state.name}
-                   email={this.state.email}
-                   password={this.state.password} />
-            } />
-            <Route exact path='/sign-in/' render={(props) =>
-                 <SignIn {...props}
-                   email={this.state.email}
-                   password={this.state.password} />
-            } />
-            <Route exact path='/user-page/' render={(props) =>
-                 <UserPage {...props}
-                   searchRadius={this.state.searchRadius}
-                   name={this.state.name}
-                   email={this.state.email}
-                   password={this.state.password}
-                   address={this.state.address}
-                   bio={this.state.bio}
-                   dogName={this.state.dogName}
-                   size={this.state.size}
-                   energyLevel={this.state.energyLevel}
-                   dogBio={this.state.dogBio} />
-            } />
+        <Switch>
+          <Route exact path='/' component={Splash} />
+          <Route exact path='/sign-up/' render={(props) =>
+            <SignUp {...props}
+              username={this.state.name}
+              email={this.state.email}
+              password={this.state.password} />
+          } />
+          <Route exact path='/sign-in/' render={(props) =>
+            <SignIn {...props}
+              email={this.state.email}
+              password={this.state.password} />
+          } />
+          <Route exact path='/user-page/' render={(props) =>
+            <UserPage {...props}
+              searchRadius={this.state.searchRadius}
+              name={this.state.name}
+              email={this.state.email}
+              password={this.state.password}
+              address={this.state.address}
+              bio={this.state.bio}
+              dogName={this.state.dogName}
+              size={this.state.size}
+              energyLevel={this.state.energyLevel}
+              dogBio={this.state.dogBio} />
+          } />
             <Route path="/browse/" component={Browse} />
           </Switch>
-        </div>
       </div>
     );
   }
