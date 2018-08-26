@@ -8,22 +8,23 @@ class Browse extends Component {
   render() {
     return (
       <div className="Browse">
-        <div className="Browse--nav">
-          <h1>Find a pup!</h1>
+        <div className="Browse--content">
+          <div className="Browse--nav">
+            <h1>find a pupper friend!</h1>
 
-          <Link to="/user-page/">
-            <Button>user page</Button>
-          </Link>
+            <Link to="/user-page/">
+              <Button>user page</Button>
+            </Link>
 
-          <Link to="/">
-            <Button>log out</Button>
-          </Link>
+            <Link to="/">
+              <Button>log out</Button>
+            </Link>
+          </div>
+
+          <Card />
+
+          <div>SOmething here...</div>
         </div>
-
-        <Card />
-
-        <div></div>
-
       </div>
     );
   }
