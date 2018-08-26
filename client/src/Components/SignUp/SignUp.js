@@ -8,15 +8,8 @@ class SignUp extends Component {
     password: '',
   }
 
-  // adderFunction = (a = 3, b = 5) => {
-  //   console.log(a + b);
-  // }
 
   onSubmit = () => {
-    // this.adderFunction();
-    // this.adderFunction(10);
-    // this.adderFunction(10, 20);
-    //
     const url = '/sign-up';
     const data = {
       name: this.state.name,
@@ -25,6 +18,9 @@ class SignUp extends Component {
     };
     fetch(url, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
     .then(console.log("data", data))
@@ -32,6 +28,8 @@ class SignUp extends Component {
     .then(responseData => {
       console.log("DATAMEOW", responseData)
     });
+
+
   }
 
   onNameChange = (ev) => {
