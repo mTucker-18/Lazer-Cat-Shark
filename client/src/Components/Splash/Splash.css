@@ -3,6 +3,9 @@
   background-size: cover;
   background-color: var(--green);
   color: var(--dark-blue);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 .Splash--title {
@@ -14,11 +17,4 @@
 .Splash--slogan {
   font-size: 500%;
   position: relative;
-}
-
-.Button {
-  font-family: inherit;
-  color: var(--dark-blue);
-  font-size: 150%;
-  padding: 50px;
 }
