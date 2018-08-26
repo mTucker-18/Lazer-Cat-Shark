@@ -8,7 +8,6 @@ class SignUp extends Component {
     password: '',
   }
 
-
   onSubmit = () => {
     const url = '/sign-up';
     const data = {

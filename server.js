@@ -2,11 +2,32 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
+const session = require('express-session');
+const passport = require('./passport');
 
 let db = null;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+app.use(
+  session({
+    secret: 'leaping-llama',
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use((req, res, next) => {
+  console.log('req.session', req.session);
+  return next();
+});
+app.use(passport.initialize());
+app.use(passport.session()); // calls serializeUser and deserializeUser
+
+app.post('/sign-in', (req, res) => {
+  console.log('user signin');
+  req.session.username = req.body.username;
+  res.end();
+});
 
 app.get('/', (req, res) => {
   db.collection('users').find({}).toArray(
