@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './Splash.css';
+import Button from '../Button/button.js';
 
 class Splash extends Component {
   render() {
@@ -11,20 +12,20 @@ class Splash extends Component {
         <p className="Splash--slogan">connecting dogs and dog lovers</p>
         <div>
           <Link to="/sign-up/">
-            <button className="Button">
-              Sign up
-            </button>
+            <Button className="Button">
+              sign up
+            </Button>
           </Link>
         </div>
 
         <div>
           <Link to="/sign-in/">
-            <button className="Button">
-              Sign in
-            </button>
+            <Button className="Button">
+              sign in
+            </Button>
           </Link>
         </div>
-        
+
       </div>
     );
   }
