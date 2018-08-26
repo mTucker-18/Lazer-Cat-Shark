@@ -10,7 +10,7 @@ class UserPage extends Component {
       name: '',
       email: '',
       password: '',
-      address:'',
+      address:'1600 Amphitheatre Parkway,Mountain View',
       bio: '',
     },
     doggos : {
@@ -56,6 +56,20 @@ class UserPage extends Component {
     });
     console.log('getting a new address:', value);
   }
+  onGeoAddress = () => {
+  
+  let addressWithPlusSigns = this.state.human.address.replace(/ /g, '+');
+  
+  
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}+CA&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
+    .then(response => response.json())
+    .then(data => {
+      console.log("got data", data);
+      ///////// TODO post to db
+      });
+    }
+    
+    
   onBioChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -155,6 +169,8 @@ class UserPage extends Component {
                 value={this.props.address}
                 onChange={this.onAddressChange}
               />
+              <button onClick={this.onGeoAddress}> Get API data
+                 </button>
             </h2>
 
 
