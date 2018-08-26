@@ -15,7 +15,6 @@
 
 /* styled page according to BEM */
 .App {
-  background: var(--green);
   display: grid;
   font-family: 'Lobster', cursive;
   text-align: center;
@@ -26,5 +25,5 @@
 }
 
 .App-mainContent {
-  
+
 }
