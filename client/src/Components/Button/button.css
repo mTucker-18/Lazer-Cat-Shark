@@ -12,6 +12,7 @@
   margin: 10px;
   text-decoration: none;
 }
+
 .Button:hover {
   background: #2079b0;
   background-image: linear-gradient(to bottom, #DEF2C8, #246A73);

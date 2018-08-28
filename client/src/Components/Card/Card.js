@@ -6,17 +6,12 @@ class Card extends Component {
     return (
       <div className='CardBox'>
 
-        <div className='card'>
-          <div className='row'>
-            <div className='col-xs-6'>
-              <img src='../../media/big_dog.jpg' />
-            </div>
-
-            <div className='col-xs-6 side-front-content'>
-              <h4><b>Jane Doe</b></h4>
-              <p>Architect & Engineer</p>
-              <p>Cool and stuff</p>
-            </div>
+        <div className="card">
+          <img src={"../../media/small_dog.png"} alt="woman with small dog" />
+          <div className="container">
+            <h4><b>Jane Doe</b></h4>
+            <p>Architect & Engineer</p>
+            <p>Cool and stuff</p>
           </div>
         </div>
       </div>
