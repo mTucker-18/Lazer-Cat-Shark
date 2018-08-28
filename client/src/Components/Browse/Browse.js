@@ -5,18 +5,18 @@ import Card from '../Card/Card.js';
 import './Browse.css';
 
 class Browse extends Component {
-  render() {
+  render () {
     return (
-      <div className="Browse">
-        <div className="Browse--content">
-          <div className="Browse--nav">
+      <div className='Browse'>
+        <div className='Browse--content'>
+          <div className='Browse--nav'>
             <h1>find a pupper friend!</h1>
 
-            <Link to="/user-page/">
+            <Link to='/user-page/'>
               <Button>user page</Button>
             </Link>
 
-            <Link to="/">
+            <Link to='/'>
               <Button>log out</Button>
             </Link>
           </div>

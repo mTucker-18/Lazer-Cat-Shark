@@ -32,7 +32,6 @@ class App extends Component {
     this.setState({
       isLoggedIn: true,
       human: {
-        searchRadius: data.searchRadius,
         name: data.name,
       },
     })
