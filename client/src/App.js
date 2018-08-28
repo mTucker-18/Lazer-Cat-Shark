@@ -27,7 +27,7 @@ class App extends Component {
       bio: '',
     }
   }
-
+  // Set user's logged in state here
   setLoggedIn = (data) => {
     this.setState({
       isLoggedIn: true,
@@ -37,7 +37,7 @@ class App extends Component {
       },
     })
   }
-
+  // Routing with React Router
   render() {
     return (
       <div className="App">
@@ -57,6 +57,7 @@ class App extends Component {
           } />
           <Route exact path='/user-page/' render={(props) =>
             <UserPage {...props}
+              isLoggedIn={this.state.isLoggedIn}
               searchRadius={this.state.searchRadius}
               name={this.state.name}
               email={this.state.email}
@@ -68,7 +69,11 @@ class App extends Component {
               energyLevel={this.state.energyLevel}
               dogBio={this.state.dogBio} />
           } />
-            <Route path="/browse/" component={Browse} />
+            // <Route path="/browse/" component={Browse} />
+            <Route exact path='/browse/' render={(props) =>
+              <Browse {...props}
+              isLoggedIn={this.state.isLoggedIn} />
+            } />
           </Switch>
       </div>
     );

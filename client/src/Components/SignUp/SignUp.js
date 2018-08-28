@@ -22,6 +22,8 @@ class SignUp extends Component {
       password: this.state.password,
       address: '',
       radius: '',
+      likes: [],
+      likedBy: [],
       bio: '',
       dog_name: '',
       dog_size: '',
