@@ -5,6 +5,7 @@ import Button from '../Button/button.js';
 
 class UserPage extends Component {
   state = {
+    isAccordianVisible: true,
     human : {
       searchRadius: 'update',
       name: 'Hien Phuong',
@@ -64,7 +65,7 @@ class UserPage extends Component {
   console.log('button working')
   let addressWithPlusSigns = this.state.human.address.replace(/ /g, '+');
   console.log('this is the search parameters:', addressWithPlusSigns)
-  
+
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
     .then(response => response.json())
     .then(data => {
@@ -72,9 +73,9 @@ class UserPage extends Component {
       ///////// TODO post to db
       });
     }
-    
+
     //results[""0""].geometry.location
- 
+
   onBioChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -110,25 +111,47 @@ class UserPage extends Component {
     });
     console.log('getting a new dog bio:', value);
   }
+
   toggleLearnMore = () => {
-      console.log('toggling learn more');
-      let accordion = document.getElementById('#showmore');
-      accordion.classList.toggle('TextField--Collapse');
+    // if (this.state.isAccordianVisible === false) {
+    //   this.setState({
+    //     isAccordianVisible: true,
+    //   })
+    // } else {
+    //   this.setState({
+    //     isAccordianVisible: false,
+    //   })
+    // }
+    console.log('hello');
+    this.setState({
+      isAccordianVisible: !this.state.isAccordianVisible,
+    })
+    console.log(this.state.isAccordianVisible);
 
-      let button = document.getElementById('#showmore');
-      if (accordion.classList.contains('TextField--Collapse')) {
-          button.textContent = 'Learn More ↓';
-      } else {
-          button.textContent = 'Learn more ↑';
-      }
   }
+
+
   render() {
+    let toggleDivClass = "";
+    let buttonText = "Edit Info ↓";
+    let doggoStyle = {};
+
+    if (this.state.isAccordianVisible === false) {
+      buttonText = "Finished  ↑";
+      doggoStyle = {
+        height: "0",
+      };
+    } else {
+      doggoStyle = {
+        height: "800px",
+      };
+    }
+
     return (
-      <div className="UserPage" id="showmore">
-        <h1>User Page</h1>
+      <div className="UserPage">
 
-        <div className="Navigation" id="showmore">
-
+        <div className="Navigation">
+          <h1>User Page</h1>
           <Link to="/browse/">
             <Button>Find a Friend!</Button>
           </Link>
@@ -136,26 +159,23 @@ class UserPage extends Component {
           <Link to="/">
             <Button>Log Out</Button>
           </Link>
+          <Button onClick={this.toggleLearnMore}>{buttonText}</Button>
 
         </div>
 
-        <h2>Human Info.</h2>
 
-        <div className="Human" id="showmore">
+        <div className={'Human ' }>
+          <h2>Human Info.</h2>
+          <div className="Image">
+          <p>name: {this.state.human.name}</p>
+          <p>email: {this.state.human.email}</p>
+          <p>address: {this.state.human.address}</p>
+          <p>bio: {this.state.human.bio}</p>
+        </div>
 
-          <div className="Image" id="showmore">
-            <p>name: {this.state.human.name}</p>
-            <p>email: {this.state.human.email}</p>
-            <p>address: {this.state.human.address}</p>
-            <p>bio: {this.state.human.bio}</p>
-          </div>
-          <div className="container">
-            <div className="row">
-              <button className="button button-primary" id="more-info-button" onClick="toggleLearnMore()">Learn More ↑</button>
-            </div>
-          </div>
-          <div className="showMore">
-          <div className="TextField" id="showmore">
+
+        <div style={doggoStyle} className={'Doggos '+ toggleDivClass}>
+            <div>
             <h2>Search Radius: {this.props.searchRadius}
               <input
                 placeholder="Enter your search radius"
@@ -194,7 +214,7 @@ class UserPage extends Component {
                 value={this.props.address}
                 onChange={this.onAddressChange}
               />
-              
+
             </h2>
 
 
@@ -206,20 +226,14 @@ class UserPage extends Component {
               />
             </h2>
 
-          </div>
-        </div>
 
-        <hr />
 
-        <h2>Dog Info.</h2>
-
-        <div className="Doggos" id="showmore" >
-
-          <div className="Image" id="showmore" >
+          <div className="Image" >
+            <h2>Dog Info.</h2>
             <p>Will have some image here</p>
           </div>
 
-          <div className="TextField" id="showmore">
+          <div>
             <h2>Name: {this.props.dogName}
               <input
                 placeholder="Enter your password"
@@ -251,8 +265,9 @@ class UserPage extends Component {
                 onChange={this.ondogBioChange}
               />
             </h2>
-            
+
             <Button onClick={this.onGeoAddress}>Save</Button>
+            </div>
           </div>
         </div>
         </div>
