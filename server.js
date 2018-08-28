@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const session = require('express-session');
-const passport = require('./passport');
+const passport = require('passport');
 
 let db = null;
 
@@ -25,8 +25,14 @@ app.use(passport.session()); // calls serializeUser and deserializeUser
 
 app.post('/sign-in', (req, res) => {
   console.log('user signin');
-  req.session.username = req.body.username;
-  res.end();
+  req.session.username = req.body.email;
+
+  // maybe we want to do a DB query for more info here?
+  res.json({
+    message: "good job, you did it!",
+    superSuccessDog: true,
+  })
+  //res.end();
 });
 
 app.get('/', (req, res) => {
@@ -52,6 +58,26 @@ app.post('/sign-up', (req, res) => {
   });
 });
 
+app.post('/sign-in', (req, res) => {
+  console.log('body', req.body);
+  let data = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  db.collection('users').findOne({email: data.email}, (err, user) => {
+    if (err) throw err;
+    console.log(data);
+    //passport.authenticate(data),
+    // (req, res) => {
+      // console.log('logged in', req.user);
+      // var userInfo = {
+        // email: req.user.email
+      // }
+      // res.send(userInfo);
+    }
+    res.json(data);
+  })
+})
 
 
 const MONGODB_URL = 'mongodb://localhost:27017/fetchr';

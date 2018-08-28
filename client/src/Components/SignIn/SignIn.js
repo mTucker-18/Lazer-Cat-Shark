@@ -5,7 +5,7 @@ import Button from '../Button/button.js';
 
 class SignIn extends Component {
   state = {
-    emails: '',
+    email: '',
     password: '',
   }
   onSubmit = () => {
@@ -22,7 +22,15 @@ class SignIn extends Component {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then(
+    .then(responseData => {
+        console.log("response", responseData);
+        if (responseData.superSuccessDog) {
+          this.props.onSuccessfulSignIn({
+            //where logic for authentication should go
+          })
+
+        }
+      }
       // method for authentication
     );
   }
@@ -60,7 +68,7 @@ class SignIn extends Component {
               onChange={this.onPasswordChange}
             />
             </h2>
-          <Button>sign in</Button>
+          <Button onClick={this.onSubmit}>sign in</Button>
         </div>
       </div>
     );

@@ -11,6 +11,7 @@ import Browse from './Components/Browse/Browse.js';
 
 class App extends Component {
   state = {
+    isLoggedIn: false,
     human : {
       searchRadius: '',
       name: '',
@@ -26,6 +27,17 @@ class App extends Component {
       bio: '',
     }
   }
+
+  setLoggedIn = (data) => {
+    this.setState({
+      isLoggedIn: true,
+      human: {
+        searchRadius: data.searchRadius,
+        name: data.name,
+      },
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -39,6 +51,7 @@ class App extends Component {
           } />
           <Route exact path='/sign-in/' render={(props) =>
             <SignIn {...props}
+              onSuccessfulSignIn={this.setLoggedIn}
               email={this.state.email}
               password={this.state.password} />
           } />
