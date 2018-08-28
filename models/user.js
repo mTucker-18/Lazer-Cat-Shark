@@ -27,7 +27,7 @@ const userSchema = new Schema({
     type: Number,
     required: true
   },
-  human_bio: {
+  bio: {
     type: String
   },
   likes: {

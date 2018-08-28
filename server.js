@@ -58,33 +58,44 @@ app.post('/sign-up', (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-app.post('/sign-in', (req, res) => {
-  console.log('body', req.body);
+app.post('/user-page', (req, res) => {
+  console.log('this is more body', req.body);
   let data = {
-    email: req.body.email,
-    password: req.body.password,
+    address: req.body.address,
+    radius: req.body.radius,
+    dog_name: req.body.dog_name,
+    dog_size: req.body.dog_size,
+    dog_energy: req.body.dog_energy,
+    bio: req.body.bio
   };
-  db.collection('users').findOne({email: data.email}, (err, user) => {
+  db.collection('users').findOneAndUpdate({}, data, (err, data) => {
     if (err) throw err;
     console.log(data);
-    //passport.authenticate(data),
+    res.json(data);
+  });
+});
+// app.post('/sign-in', (req, res) => {
+//   console.log('body', req.body);
+//   let data = {
+//     email: req.body.email,
+//     password: req.body.password,
+//   };
+//   db.collection('users').findOne({email: data.email}, (err, user) => {
+//     if (err) throw err;
+//     console.log(data);
+    // passport.authenticate(data),
     // (req, res) => {
       // console.log('logged in', req.user);
       // var userInfo = {
         // email: req.user.email
       // }
       // res.send(userInfo);
-    }
-    res.json(data);
-  })
-})
+    // }
+    // res.json(data);
+  // })
+// })
 
-
-const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
-=======
 const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
->>>>>>> 7b605f8a55285252b7752ce2a709eae1619719ad
 const MONGODB_DATABASE = 'fetchr';
 const PORT = 3001;
 

@@ -6,6 +6,12 @@ class SignUp extends Component {
     name: '',
     email: '',
     password: '',
+    address: '',
+    radius: '',
+    bio: '',
+    dog_name: '',
+    dog_size: '',
+    dog_energy: '',
   }
 
   onSubmit = () => {
@@ -14,6 +20,12 @@ class SignUp extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
+      address: '',
+      radius: '',
+      bio: '',
+      dog_name: '',
+      dog_size: '',
+      dog_energy: '',
     };
     fetch(url, {
       method: "POST",
