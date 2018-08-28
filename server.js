@@ -58,6 +58,7 @@ app.post('/sign-up', (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 app.post('/sign-in', (req, res) => {
   console.log('body', req.body);
   let data = {
@@ -81,8 +82,15 @@ app.post('/sign-in', (req, res) => {
 
 
 const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+=======
+const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
+>>>>>>> 7b605f8a55285252b7752ce2a709eae1619719ad
 const MONGODB_DATABASE = 'fetchr';
 const PORT = 3001;
+
+// const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+// const MONGODB_DATABASE = 'fetchr';
+// const PORT = 3001;
 //
 //
 MongoClient.connect(MONGODB_URL, { useNewUrlParser: true }, (err, client) => {
