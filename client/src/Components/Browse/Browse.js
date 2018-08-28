@@ -23,7 +23,7 @@ class Browse extends Component {
 
           <Card />
 
-          <div>SOmething here...</div>
+          <div>Something here...</div>
         </div>
       </div>
     );
