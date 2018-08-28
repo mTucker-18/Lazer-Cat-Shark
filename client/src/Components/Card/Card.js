@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import './Card.css';
 
 class Card extends Component {
-
-  render() {
+  render () {
     return (
-      <div className="CardBox">
+      <div className='CardBox'>
 
         <div className="card">
           <img src={"../../media/small_dog.png"} alt="woman with small dog" />
@@ -13,7 +12,6 @@ class Card extends Component {
             <h4><b>Jane Doe</b></h4>
             <p>Architect & Engineer</p>
             <p>Cool and stuff</p>
-
           </div>
         </div>
       </div>

@@ -6,6 +6,12 @@ class SignUp extends Component {
     name: '',
     email: '',
     password: '',
+    address: '',
+    radius: '',
+    bio: '',
+    dog_name: '',
+    dog_size: '',
+    dog_energy: '',
   }
 
   onSubmit = () => {
@@ -14,6 +20,14 @@ class SignUp extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
+      address: '',
+      radius: '',
+      likes: [],
+      likedBy: [],
+      bio: '',
+      dog_name: '',
+      dog_size: '',
+      dog_energy: '',
     };
     fetch(url, {
       method: "POST",
@@ -60,7 +74,7 @@ class SignUp extends Component {
           <h1 className="SignUp--title">join us to find friends for your doggos!</h1>
           <h2>name: {this.props.username}
           <input
-            name="human_name"
+            name="name"
             placeholder="enter your name"
             value={this.props.username}
             onChange={this.onNameChange}

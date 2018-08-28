@@ -5,8 +5,34 @@ import Button from '../Button/button.js';
 
 class SignIn extends Component {
   state = {
-    emails: '',
+    email: '',
     password: '',
+  }
+  onSubmit = () => {
+    const url = '/sign-in';
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        console.log("response", responseData);
+        if (responseData.superSuccessDog) {
+          this.props.onSuccessfulSignIn({
+            //where logic for authentication should go
+          })
+
+        }
+      }
+      // method for authentication
+    );
   }
   onEmailChange = (ev) => {
     let value = ev.target.value;
@@ -42,7 +68,7 @@ class SignIn extends Component {
               onChange={this.onPasswordChange}
             />
             </h2>
-          <Button>sign in</Button>
+          <Button onClick={this.onSubmit}>sign in</Button>
         </div>
       </div>
     );

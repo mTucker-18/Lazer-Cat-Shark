@@ -11,6 +11,7 @@ import Browse from './Components/Browse/Browse.js';
 
 class App extends Component {
   state = {
+    isLoggedIn: false,
     human : {
       searchRadius: '',
       name: '',
@@ -26,6 +27,16 @@ class App extends Component {
       bio: '',
     }
   }
+  // Set user's logged in state here
+  setLoggedIn = (data) => {
+    this.setState({
+      isLoggedIn: true,
+      human: {
+        name: data.name,
+      },
+    })
+  }
+  // Routing with React Router
   render() {
     return (
       <div className="App">
@@ -39,11 +50,13 @@ class App extends Component {
           } />
           <Route exact path='/sign-in/' render={(props) =>
             <SignIn {...props}
+              onSuccessfulSignIn={this.setLoggedIn}
               email={this.state.email}
               password={this.state.password} />
           } />
           <Route exact path='/user-page/' render={(props) =>
             <UserPage {...props}
+              isLoggedIn={this.state.isLoggedIn}
               searchRadius={this.state.searchRadius}
               name={this.state.name}
               email={this.state.email}
@@ -55,7 +68,11 @@ class App extends Component {
               energyLevel={this.state.energyLevel}
               dogBio={this.state.dogBio} />
           } />
-            <Route path="/browse/" component={Browse} />
+            // <Route path="/browse/" component={Browse} />
+            <Route exact path='/browse/' render={(props) =>
+              <Browse {...props}
+              isLoggedIn={this.state.isLoggedIn} />
+            } />
           </Switch>
       </div>
     );
