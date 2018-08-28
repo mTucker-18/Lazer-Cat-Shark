@@ -8,7 +8,6 @@ class SignUp extends Component {
     password: '',
   }
 
-
   onSubmit = () => {
     const url = '/sign-up';
     const data = {
@@ -57,31 +56,36 @@ class SignUp extends Component {
   render() {
     return (
       <div className="SignUp">
-        <h1>Join us to find friends for your doggos!</h1>
-        <h2>Name: {this.props.username}</h2>
-        <input
+        <div className="InputFields">
+          <h1 className="SignUp--title">join us to find friends for your doggos!</h1>
+          <h2>name: {this.props.username}
+          <input
             name="human_name"
-            placeholder="Enter your name"
+            placeholder="enter your name"
             value={this.props.username}
             onChange={this.onNameChange}
           />
+          </h2>
 
-          <h2>Email: {this.props.email}</h2>
-          <input
+          <h2>email: {this.props.email}
+            <input
               name="email"
-              placeholder="Enter your email"
+              placeholder="enter email"
               value={this.props.email}
               onChange={this.onEmailChange}
             />
+            </h2>
 
-            <h2>Password: {this.props.password}</h2>
-          <input
-                name="password"
-                placeholder="Enter your password"
-                value={this.props.password}
-                onChange={this.onPasswordChange}
-              />
-        <button onClick={this.onSubmit}>Sign Up</button>
+            <h2>password: {this.props.password}
+            <input
+              name="password"
+              placeholder="create a password"
+              value={this.props.password}
+              onChange={this.onPasswordChange}
+            />
+            </h2>
+          <Button onClick={this.onSubmit}>sign up</Button>
+        </div>
       </div>
     );
   }

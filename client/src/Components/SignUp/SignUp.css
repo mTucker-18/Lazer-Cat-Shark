@@ -1,0 +1,19 @@
+.SignUp {
+  background-image: url("../../media/dog_stick_new.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 3;
+  grid-template-rows: 2;
+}
+
+.SignUp--title {
+  font-size: 250%;
+}
+
+.InputFields {
+  grid-column: 2;
+  grid-row: 2;
+}
