@@ -6,18 +6,18 @@ import Button from '../Button/button.js';
 class UserPage extends Component {
   state = {
     human : {
-      searchRadius: '',
-      name: '',
-      email: '',
-      password: '',
-      address:'',
-      bio: '',
+      searchRadius: 'update',
+      name: 'Hien Phuong',
+      email: 'some@email.com',
+      password: 'update',
+      address:'555 cool st, great town, CA',
+      bio: 'I got a dog, do you?',
     },
     doggos : {
-      dogName: '',
-      size: '',
-      energyLevel: '',
-      dogBio: '',
+      dogName: 'Yippy',
+      size: 'kinda small?',
+      energyLevel: 'max',
+      dogBio: "basically what you'd expect",
     }
   }
   onSearchRadiusChange = (ev) => {
@@ -57,19 +57,19 @@ class UserPage extends Component {
     console.log('getting a new address:', value);
   }
   onGeoAddress = () => {
-  
+
   let addressWithPlusSigns = this.state.human.address.replace(/ /g, '+');
-  
-  
+
+
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}+CA&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
     .then(response => response.json())
     .then(data => {
       console.log("got data", data);
-      ///////// TODO post to db
+
       });
     }
-    
-    
+
+
   onBioChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -105,12 +105,24 @@ class UserPage extends Component {
     });
     console.log('getting a new dog bio:', value);
   }
+  toggleLearnMore = () => {
+      console.log('toggling learn more');
+      let accordion = document.getElementById('#showmore');
+      accordion.classList.toggle('TextField--Collapse');
+
+      let button = document.getElementById('#showmore');
+      if (accordion.classList.contains('TextField--Collapse')) {
+          button.textContent = 'Learn More ↓';
+      } else {
+          button.textContent = 'Learn more ↑';
+      }
+  }
   render() {
     return (
-      <div className="UserPage">
+      <div className="UserPage" id="showmore">
         <h1>User Page</h1>
 
-        <div className="Navigation">
+        <div className="Navigation" id="showmore">
 
           <Link to="/browse/">
             <Button>Find a Friend!</Button>
@@ -124,13 +136,21 @@ class UserPage extends Component {
 
         <h2>Human Info.</h2>
 
-        <div className="Human">
+        <div className="Human" id="showmore">
 
-          <div className="Image">
-            <p>Will have some image here</p>
+          <div className="Image" id="showmore">
+            <p>name: {this.state.human.name}</p>
+            <p>email: {this.state.human.email}</p>
+            <p>address: {this.state.human.address}</p>
+            <p>bio: {this.state.human.bio}</p>
           </div>
-
-          <div className="TextField">
+          <div className="container">
+            <div className="row">
+              <button className="button button-primary" id="more-info-button" onClick="toggleLearnMore()">Learn More ↑</button>
+            </div>
+          </div>
+          <div className="showMore">
+          <div className="TextField" id="showmore">
             <h2>Search Radius: {this.props.searchRadius}
               <input
                 placeholder="Enter your search radius"
@@ -189,13 +209,13 @@ class UserPage extends Component {
 
         <h2>Dog Info.</h2>
 
-        <div className="Doggos">
+        <div className="Doggos" id="showmore" >
 
-          <div className="Image">
+          <div className="Image" id="showmore" >
             <p>Will have some image here</p>
           </div>
 
-          <div className="TextField">
+          <div className="TextField" id="showmore">
             <h2>Name: {this.props.dogName}
               <input
                 placeholder="Enter your password"
@@ -230,7 +250,7 @@ class UserPage extends Component {
               <Button>Save</Button>
           </div>
         </div>
-
+        </div>
       </div>
     );
   }
