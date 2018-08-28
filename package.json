@@ -16,6 +16,6 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "concurrently \"react-scripts start\" \"nodemon server.js\""
   }
 }

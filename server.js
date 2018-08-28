@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// insert user with post request
+// post request inserts user
 app.post('/sign-up', (req, res) => {
   console.log('this is body', req.body);
   let data = {
@@ -56,6 +56,8 @@ app.post('/sign-up', (req, res) => {
     name: req.body.name,
     address: '',
     radius: '',
+    likes: [],
+    likedBy: [],
     dog_name: '',
     dog_size: '',
     dog_energy: '',
@@ -68,7 +70,7 @@ app.post('/sign-up', (req, res) => {
   });
 });
 
-// updates user with user page fields
+// post request updates user with user page fields
 app.post('/user-page', (req, res) => {
   console.log('this is more body', req.body);
   let data = {
@@ -85,6 +87,23 @@ app.post('/user-page', (req, res) => {
     res.json(data);
   });
 });
+// post request for saving likes and likedBy profiles in both user and user-liked profiles
+app.post('/browse', (req, res) => {
+  console.log('this is more body', req.body);
+  let data = {
+    likes = [],  //how to add to these arrays without overriding previous likes?
+    likedBy = []
+  };
+  db.collection('users').update(
+    {name: this.state.name},
+    {$push: {likes: {this.state.user?}}, data, (err, data) => {
+      if (err) throw err;
+      console.log(data);
+      res.json(data);
+    }} //push document or objectID to likes arrays
+
+  )
+})
 
 // const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
 // const MONGODB_DATABASE = 'fetchr';
