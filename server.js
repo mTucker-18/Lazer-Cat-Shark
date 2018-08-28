@@ -9,6 +9,7 @@ let db = null;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+// Use passport session
 app.use(
   session({
     secret: 'leaping-llama',
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 app.use(passport.initialize());
 app.use(passport.session()); // calls serializeUser and deserializeUser
 
+// post request to sign in
 app.post('/sign-in', (req, res) => {
   console.log('user signin');
   req.session.username = req.body.email;
@@ -35,6 +37,7 @@ app.post('/sign-in', (req, res) => {
   //res.end();
 });
 
+// get request finds all users at splash page - should likely be changed to browse page
 app.get('/', (req, res) => {
   db.collection('users').find({}).toArray(
     (err, data) => {
@@ -44,12 +47,19 @@ app.get('/', (req, res) => {
     });
 });
 
+// insert user with post request
 app.post('/sign-up', (req, res) => {
   console.log('this is body', req.body);
   let data = {
     email: req.body.email,
     password: req.body.password,
-    name: req.body.name
+    name: req.body.name,
+    address: '',
+    radius: '',
+    dog_name: '',
+    dog_size: '',
+    dog_energy: '',
+    bio: ''
   };
   db.collection('users').insertOne(data, (err, data) => {
     if (err) throw err;
@@ -58,6 +68,7 @@ app.post('/sign-up', (req, res) => {
   });
 });
 
+// updates user with user page fields
 app.post('/user-page', (req, res) => {
   console.log('this is more body', req.body);
   let data = {
@@ -74,34 +85,14 @@ app.post('/user-page', (req, res) => {
     res.json(data);
   });
 });
-// app.post('/sign-in', (req, res) => {
-//   console.log('body', req.body);
-//   let data = {
-//     email: req.body.email,
-//     password: req.body.password,
-//   };
-//   db.collection('users').findOne({email: data.email}, (err, user) => {
-//     if (err) throw err;
-//     console.log(data);
-    // passport.authenticate(data),
-    // (req, res) => {
-      // console.log('logged in', req.user);
-      // var userInfo = {
-        // email: req.user.email
-      // }
-      // res.send(userInfo);
-    // }
-    // res.json(data);
-  // })
-// })
 
-const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
-const MONGODB_DATABASE = 'fetchr';
-const PORT = 3001;
-
-// const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+// const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
 // const MONGODB_DATABASE = 'fetchr';
 // const PORT = 3001;
+
+const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+const MONGODB_DATABASE = 'fetchr';
+const PORT = 3001;
 //
 //
 MongoClient.connect(MONGODB_URL, { useNewUrlParser: true }, (err, client) => {
