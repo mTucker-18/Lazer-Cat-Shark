@@ -52,11 +52,13 @@ app.post('/sign-up', (req, res) => {
   });
 });
 
-
-
-const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
 const MONGODB_DATABASE = 'fetchr';
 const PORT = 3001;
+
+// const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+// const MONGODB_DATABASE = 'fetchr';
+// const PORT = 3001;
 //
 //
 MongoClient.connect(MONGODB_URL, { useNewUrlParser: true }, (err, client) => {
