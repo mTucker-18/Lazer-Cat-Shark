@@ -52,6 +52,7 @@ class UserPage extends Component {
   onAddressChange = (ev) => {
     let value = ev.target.value;
     this.setState({
+      address: value,
       human:{
         address: value,
         },
@@ -173,8 +174,7 @@ class UserPage extends Component {
                 value={this.props.address}
                 onChange={this.onAddressChange}
               />
-              <button onClick={this.onGeoAddress}> Get API data
-                 </button>
+              
             </h2>
 
 
