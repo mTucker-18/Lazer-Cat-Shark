@@ -19,6 +19,8 @@ class App extends Component {
       password: '',
       address:'',
       bio: '',
+      likes: [],
+      likedBy: []
     },
     doggos : {
       name: '',

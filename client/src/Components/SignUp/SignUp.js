@@ -40,8 +40,6 @@ class SignUp extends Component {
     .then(responseData => {
       console.log("DATAMEOW", responseData)
     });
-
-
   }
 
   onNameChange = (ev) => {
