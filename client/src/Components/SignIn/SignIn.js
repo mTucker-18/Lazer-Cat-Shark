@@ -8,6 +8,24 @@ class SignIn extends Component {
     emails: '',
     password: '',
   }
+  onSubmit = () => {
+    const url = '/sign-in';
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(
+      // method for authentication
+    );
+  }
   onEmailChange = (ev) => {
     let value = ev.target.value;
     this.setState({
