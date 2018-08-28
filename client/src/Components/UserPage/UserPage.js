@@ -52,22 +52,26 @@ class UserPage extends Component {
   onAddressChange = (ev) => {
     let value = ev.target.value;
     this.setState({
-      address: value,
+      human:{
+        address: value,
+        },
     });
-    console.log('getting a new address:', value);
+    console.log('getting a new address:', this.state.human.address);
   }
   onGeoAddress = () => {
-  
+  console.log('button working')
   let addressWithPlusSigns = this.state.human.address.replace(/ /g, '+');
+  console.log('this is the search parameters:', addressWithPlusSigns)
   
-  
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}+CA&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
     .then(response => response.json())
     .then(data => {
-      console.log("got data", data);
+      console.log("got data:", data);
       ///////// TODO post to db
       });
     }
+    
+    //results[""0""].geometry.location
     
     
   onBioChange = (ev) => {
@@ -227,7 +231,8 @@ class UserPage extends Component {
                 onChange={this.ondogBioChange}
               />
             </h2>
-              <Button>Save</Button>
+            
+            <Button onClick={this.onGeoAddress}>Save</Button>
           </div>
         </div>
 
