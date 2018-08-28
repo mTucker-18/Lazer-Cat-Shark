@@ -60,7 +60,7 @@ class SignUp extends Component {
           <h1 className="SignUp--title">join us to find friends for your doggos!</h1>
           <h2>name: {this.props.username}
           <input
-            name="human_name"
+            name="name"
             placeholder="enter your name"
             value={this.props.username}
             onChange={this.onNameChange}

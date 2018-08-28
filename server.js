@@ -49,7 +49,7 @@ app.post('/sign-up', (req, res) => {
   let data = {
     email: req.body.email,
     password: req.body.password,
-    human_name: req.body.name
+    name: req.body.name
   };
   db.collection('users').insertOne(data, (err, data) => {
     if (err) throw err;
