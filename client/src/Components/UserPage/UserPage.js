@@ -12,13 +12,13 @@ class UserPage extends Component {
       email: 'some@email.com',
       password: 'update',
       address:'555 cool st, great town, CA',
-      bio: 'I got a dog, do you?',
+      bio: 'I got a dog, do you? Mine is happy go lucky, and very friendly. More stuff, blah blah blah. Email me!',
     },
     doggos : {
       dogName: 'Yippy',
       size: 'kinda small?',
       energyLevel: 'max',
-      dogBio: "basically what you'd expect",
+      dogBio: "basically what you'd expect. He poops everywhere, eats all my shoes and barks all night long...",
     }
   }
   onSearchRadiusChange = (ev) => {
@@ -150,127 +150,123 @@ class UserPage extends Component {
     return (
       <div className="UserPage">
 
+        <h1 className="UserPage--title">my personal page</h1>
+
         <div className="Navigation">
-          <h1>User Page</h1>
           <Link to="/browse/">
-            <Button>Find a Friend!</Button>
+            <Button>find a friend!</Button>
           </Link>
-
           <Link to="/">
-            <Button>Log Out</Button>
+            <Button>sign out</Button>
           </Link>
-          <Button onClick={this.toggleLearnMore}>{buttonText}</Button>
-
         </div>
 
-
-        <div className={'Human ' }>
-          <h2>Human Info.</h2>
-          <div className="Image">
-          <p>name: {this.state.human.name}</p>
-          <p>email: {this.state.human.email}</p>
-          <p>address: {this.state.human.address}</p>
-          <p>bio: {this.state.human.bio}</p>
+        <div className="DisplayInfo">
+          <h1>my information</h1>
+          <div className="DisplayInfo--fields">
+            <h2>name: {this.state.human.name}</h2>
+            <h2>email: {this.state.human.email}</h2>
+            <h2>address: {this.state.human.address}</h2>
+            <h2>bio: {this.state.human.bio}</h2>
+          </div>
+          <img src="../../media/small_dog.png" />
         </div>
 
+        <div className="Toggle">
 
-        <div style={doggoStyle} className={'Doggos '+ toggleDivClass}>
-            <div>
-            <h2>Search Radius: {this.props.searchRadius}
-              <input
-                placeholder="Enter your search radius"
-                value={this.props.searchRadius}
-                onChange={this.onSearchRadiusChange}
-              />
-            </h2>
-
-            <h2>Name: {this.props.username}
-              <input
-                placeholder="Enter name"
-                value={this.props.username}
-                onChange={this.onNameChange}
-              />
-            </h2>
-
-            <h2>Email: {this.props.email}
-              <input
-                placeholder="Enter email"
-                value={this.props.email}
-                onChange={this.onEmailChange}
-              />
-            </h2>
-
-            <h2>Password: {this.props.name}
-              <input
-                placeholder="Enter password"
-                value={this.props.password}
-                onChange={this.onPasswordChange}
-              />
-            </h2>
-
-            <h2>Address: {this.props.address}
-              <input
-                placeholder="Enter address"
-                value={this.props.address}
-                onChange={this.onAddressChange}
-              />
-
-            </h2>
-
-
-            <h2>Bio: {this.props.bio}
-              <input
-                placeholder="Tell us about yourself"
-                value={this.props.bio}
-                onChange={this.onBioChange}
-              />
-            </h2>
-
-
-
-          <div className="Image" >
-            <h2>Dog Info.</h2>
-            <p>Will have some image here</p>
+          <div className="Toggle--button">
+            <Button onClick={this.toggleLearnMore}>
+              {buttonText}
+            </Button>
           </div>
 
-          <div>
-            <h2>Name: {this.props.dogName}
-              <input
-                placeholder="Enter your password"
-                value={this.props.dogName}
-                onChange={this.ondogNameChange}
-              />
-            </h2>
+          <div style={doggoStyle} className={'Toggle--doggos '+ toggleDivClass}>
 
-            <h2>Size: {this.props.size}
-              <input
-                placeholder="Choose your doggy size"
-                value={this.props.size}
-                onChange={this.onSizeChange}
-              />
-            </h2>
+            <div className="HumanInfo">
+              <h2>name: {this.props.username}
+                <input
+                  placeholder="enter new name"
+                  value={this.props.username}
+                  onChange={this.onNameChange}
+                />
+              </h2>
+              <h2>email: {this.props.email}
+                <input
+                  placeholder="enter new email"
+                  value={this.props.email}
+                  onChange={this.onEmailChange}
+                />
+              </h2>
+              <h2>password: {this.props.name}
+                <input
+                  placeholder="enter new password"
+                  value={this.props.password}
+                  onChange={this.onPasswordChange}
+                />
+              </h2>
+              <h2>address: {this.props.address}
+                <input
+                  placeholder="enter address"
+                  value={this.props.address}
+                  onChange={this.onAddressChange}
+                />
+              </h2>
+              <h2>bio: {this.props.bio}
+                <input
+                  placeholder="tell us about yourself"
+                  value={this.props.bio}
+                  onChange={this.onBioChange}
+                />
+              </h2>
+            </div>
 
-            <h2>Energy Level: {this.props.energy}
-              <input
-                placeholder="What's your doggys energy level"
-                value={this.props.energyLevel}
-                onChange={this.onEnergyLevelChange}
-              />
-            </h2>
+            <div className="DogInfo">
+              <h2>dog name: {this.props.dogName}
+                <input
+                  placeholder="enter your dog's name"
+                  value={this.props.dogName}
+                  onChange={this.ondogNameChange}
+                />
+              </h2>
+              <h2>size: {this.props.size}
+                <input
+                  placeholder="how big is your dog?"
+                  value={this.props.size}
+                  onChange={this.onSizeChange}
+                />
+              </h2>
+              <h2>energy level: {this.props.energy}
+                <input
+                  placeholder="how energetic is your dog?"
+                  value={this.props.energyLevel}
+                  onChange={this.onEnergyLevelChange}
+                />
+              </h2>
+              <h2>bio: {this.props.dogBio}
+                <input
+                  placeholder="tell us a bit about your dog"
+                  value={this.props.dogBio}
+                  onChange={this.ondogBioChange}
+                />
+              </h2>
+            </div>
 
-            <h2>Bio: {this.props.dogBio}
-              <input
-                placeholder="Tell us a little bit about your dog"
-                value={this.props.dogBio}
-                onChange={this.ondogBioChange}
-              />
-            </h2>
-
-            <Button onClick={this.onGeoAddress}>Save</Button>
+            <div className="SaveButton">
+              <Button onClick={this.onGeoAddress}>save</Button>
             </div>
           </div>
         </div>
+
+        <div className="DisplayInfo--dog">
+          <h1>my dog information</h1>
+          <div className="DisplayInfo--fields">
+            <h2>name: {this.state.doggos.dogName}</h2>
+            <h2>email: {this.state.doggos.size}</h2>
+            <h2>address: {this.state.doggos.energyLevel}</h2>
+            <h2>bio: {this.state.doggos.dogBio}</h2>
+          </div>
         </div>
+
       </div>
     );
   }

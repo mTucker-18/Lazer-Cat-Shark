@@ -1,41 +1,73 @@
-.App {
-  /* background-color: var(--green);
-  color: var(--dark-blue);
-  height: 100%; */
-}
-
 .UserPage {
   display: grid;
-  grid-template-rows: 2;
-  background-color: var(--green);
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 3;
+  background-image: url("../../media/dog_friends_new.png");
+  background-size: cover;
   color: var(--dark-blue);
+  width: 100%;
   height: 100%;
+  position: absolute;
+}
+
+.UserPage--title {
+  position: relative;
+  grid-column: 3;
+  grid-row: 1;
+  font-size: 250%;
 }
 
 .Navigation {
-  grid-column: auto;
+  grid-column: 5;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.DisplayInfo {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.DisplayInfo--dog {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.Toggle {
+  grid-column: 3;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 3;
+  grid-template-rows: 3;
+}
+
+.Toggle--button {
+  grid-column: 2;
   grid-row: 1;
 }
 
-.Human {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: 1;
-}
-
-/* .Doggos {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  grid-template-rows: 1;
-} */
-
-.Image {
-  grid-column: 1;
-}
-
-
-.Doggos {
+.Toggle--doggos {
   box-sizing: border-box;
   transition: 1s;
   overflow: hidden;
+  grid-column: span 3;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 2;
+}
+
+.HumanInfo {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.DogInfo {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.SaveButton {
+  grid-column: 1;
+  grid-row: 2;
 }
