@@ -32,6 +32,7 @@ class Browse extends Component {
             // size={this.props.doggos.size}
             // energy={this.props.doggos.energyLevel}
             // dogBio={this.props.doggos.dogBio}
+            // distanceAway={this.props.something}
           />
         </div>
 
