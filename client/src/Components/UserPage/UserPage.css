@@ -26,11 +26,13 @@
 .DisplayInfo {
   grid-column: 2;
   grid-row: 2;
+  padding-right: 30px;
 }
 
 .DisplayInfo--dog {
   grid-column: 4;
   grid-row: 2;
+  padding-left: 30px;
 }
 
 .Toggle {

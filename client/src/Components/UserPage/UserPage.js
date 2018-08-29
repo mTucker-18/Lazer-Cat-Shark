@@ -4,8 +4,9 @@ import './UserPage.css';
 import Button from '../Button/button.js';
 
 class UserPage extends Component {
+
   state = {
-    isAccordianVisible: true,
+    isAccordianVisible: false,
     human : {
       searchRadius: 'update',
       name: 'Hien Phuong',
@@ -21,6 +22,7 @@ class UserPage extends Component {
       dogBio: "basically what you'd expect. He poops everywhere, eats all my shoes and barks all night long...",
     }
   }
+
   onSearchRadiusChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -28,6 +30,7 @@ class UserPage extends Component {
     });
     console.log('getting a new search radius:', value);
   }
+
   onNameChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -43,6 +46,7 @@ class UserPage extends Component {
     });
     console.log('getting a new email:', value);
   }
+
   onPasswordChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -50,6 +54,7 @@ class UserPage extends Component {
     });
     console.log('getting a new password:', value);
   }
+
   onAddressChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -60,6 +65,7 @@ class UserPage extends Component {
     });
     console.log('getting a new address:', this.state.human.address);
   }
+
   onGeoAddress = () => {
 
   console.log('button working')
@@ -83,6 +89,7 @@ class UserPage extends Component {
     });
     console.log('getting a new bio:', value);
   }
+
   ondogNameChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -90,6 +97,7 @@ class UserPage extends Component {
     });
     console.log('getting a doggy name:', value);
   }
+
   onSizeChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -97,6 +105,7 @@ class UserPage extends Component {
     });
     console.log('getting a new password:', value);
   }
+
   onEnergyLevelChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -104,6 +113,7 @@ class UserPage extends Component {
     });
     console.log('getting energy level:', value);
   }
+
   ondogBioChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -122,28 +132,24 @@ class UserPage extends Component {
     //     isAccordianVisible: false,
     //   })
     // }
-    console.log('hello');
     this.setState({
       isAccordianVisible: !this.state.isAccordianVisible,
     })
-    console.log(this.state.isAccordianVisible);
-
   }
-
 
   render() {
     let toggleDivClass = "";
-    let buttonText = "Edit Info ↓";
+    let buttonText = "finished  ↑";
     let doggoStyle = {};
 
     if (this.state.isAccordianVisible === false) {
-      buttonText = "Finished  ↑";
+      buttonText = "edit info ↓";
       doggoStyle = {
         height: "0",
       };
     } else {
       doggoStyle = {
-        height: "800px",
+        height: "400px",
       };
     }
 
