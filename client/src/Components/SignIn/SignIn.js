@@ -26,14 +26,17 @@ class SignIn extends Component {
         console.log("response", responseData);
         if (responseData.superSuccessDog) {
           this.props.onSuccessfulSignIn({
-            //where logic for authentication should go
+            isLoggedIn: true,
+            email: responseData.data.email,
           })
-
+          // this.setState({
+          //   redirect('/browse-page');
+          // })
         }
       }
-      // method for authentication
     );
   }
+
   onEmailChange = (ev) => {
     let value = ev.target.value;
     this.setState({
