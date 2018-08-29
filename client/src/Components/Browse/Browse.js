@@ -8,22 +8,34 @@ class Browse extends Component {
   render () {
     return (
       <div className='Browse'>
-        <div className='Browse--content'>
-          <div className='Browse--nav'>
-            <h1>find a doggo friend</h1>
 
-            <Link to='/user-page/'>
-              <Button>user page</Button>
-            </Link>
-
-            <Link to='/'>
-              <Button>log out</Button>
-            </Link>
-          </div>
-
-          <Card />
-
+        <div className='Browse--title'>
+          <h1>find a doggo friend</h1>
         </div>
+
+        <div className='Browse--nav'>
+          <Link to='/user-page/'>
+            <Button>user page</Button>
+          </Link>
+
+          <Link to='/'>
+            <Button>log out</Button>
+          </Link>
+        </div>
+
+        <div className="CardDisplay">
+          <Card
+            // picture={this.props.human.picture}
+            // username={this.props.human.name}
+            // bio={this.props.human.bio}
+            // dogName={this.props.doggos.dogName}
+            // size={this.props.doggos.size}
+            // energy={this.props.doggos.energyLevel}
+            // dogBio={this.props.doggos.dogBio}
+          />
+        </div>
+
+
       </div>
     );
   }
