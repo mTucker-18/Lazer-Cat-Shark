@@ -88,22 +88,22 @@ app.post('/user-page', (req, res) => {
   });
 });
 // post request for saving likes and likedBy profiles in both user and user-liked profiles
-app.post('/browse', (req, res) => {
-  console.log('this is more body', req.body);
-  let data = {
-    likes = [],  //how to add to these arrays without overriding previous likes?
-    likedBy = []
-  };
-  db.collection('users').update(
-    {name: this.state.name},
-    {$push: {likes: {this.state.user?}}, data, (err, data) => {
-      if (err) throw err;
-      console.log(data);
-      res.json(data);
-    }} //push document or objectID to likes arrays
+// app.post('/browse', (req, res) => {
+  // console.log('this is more body', req.body);
+  // let data = {
+  //   likes = [],  //how to add to these arrays without overriding previous likes?
+  //   likedBy = []
+  // };
+  // db.collection('users').update(
+    // {name: this.state.name},
+    // {$push: {likes: {this.state.user?}}, data, (err, data) => {
+      // if (err) throw err;
+      // console.log(data);
+      // res.json(data);
+    // }} //push document or objectID to likes arrays
 
-  )
-})
+  // )
+// })
 
 // const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
 // const MONGODB_DATABASE = 'fetchr';
