@@ -54,14 +54,14 @@ app.post('/sign-up', (req, res) => {
     email: req.body.email,
     password: req.body.password,
     name: req.body.name,
-    address: '',
-    radius: '',
+    address: req.body.address,
+    radius: req.body.radius,
     likes: [],
     likedBy: [],
-    dog_name: '',
-    dog_size: '',
-    dog_energy: '',
-    bio: ''
+    dog_name: req.body.dog_name,
+    dog_size: req.body.dog_size,
+    dog_energy: req.body.dog_energy,
+    bio: req.body.bio
   };
   db.collection('users').insertOne(data, (err, data) => {
     if (err) throw err;
