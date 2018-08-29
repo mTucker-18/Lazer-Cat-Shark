@@ -10,7 +10,7 @@ class Browse extends Component {
       <div className='Browse'>
         <div className='Browse--content'>
           <div className='Browse--nav'>
-            <h1>find a pupper friend!</h1>
+            <h1>find a doggo friend</h1>
 
             <Link to='/user-page/'>
               <Button>user page</Button>
@@ -22,7 +22,7 @@ class Browse extends Component {
           </div>
 
           <Card />
-          
+
         </div>
       </div>
     );
