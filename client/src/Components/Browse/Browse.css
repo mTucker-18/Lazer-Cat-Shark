@@ -1,7 +1,7 @@
 .Browse {
   display: grid;
-  grid-template-columns: 5;
-  grid-template-rows: 3;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
   background-image: url("../../media/dog_with_owners_new.png");
   background-size: cover;
   color: var(--dark-blue);
@@ -10,8 +10,18 @@
   position: absolute;
 }
 
+.Browse--title {
+  grid-column: 3;
+  grid-row: 1;
+}
+
 .Browse--nav {
-  grid-column: 2;
+  grid-column: 5;
   grid-row: 1;
   position: static;
+}
+
+.CardDisplay {
+  grid-column: 3;
+  grid-row: 2;
 }

@@ -59,14 +59,14 @@ class SignIn extends Component {
           <h1 className="SignIn--title">woof! welcome back</h1>
             <h2>email: {this.props.email}
             <input
-              placeholder="Enter your email"
+              placeholder="enter your email"
               value={this.props.email}
               onChange={this.onEmailChange}
             />
             </h2>
             <h2>password: {this.props.name}
             <input
-              placeholder="Enter your password"
+              placeholder="enter your password"
               value={this.props.password}
               onChange={this.onPasswordChange}
             />
