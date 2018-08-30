@@ -5,6 +5,37 @@ import Card from '../Card/Card.js';
 import './Browse.css';
 
 class Browse extends Component {
+  state = {
+      human: {
+        name: "steve",
+        likes: ["jill"],
+        isLikedBy: ["jill", "bob"],
+      },
+      user1: {
+        name: "jill",
+        likes: ["steve", "bob"],
+        isLikedBy: ["bob"],
+      },
+      user2: {
+        name: "bob",
+        likes: ["steve", "jill"],
+        isLikedBy: ["jill"],
+      },
+      user3: {
+        name: "sam",
+        likes: [],
+        isLikedBy: [],
+      },
+  }
+
+  yesButton = () => {
+    console.log("yes button works")
+  }
+
+  noButton = () => {
+    console.log("no button works")
+  }
+
   render () {
     return (
       <div className='Browse'>
@@ -25,14 +56,9 @@ class Browse extends Component {
 
         <div className="CardDisplay">
           <Card
-            // picture={this.props.human.picture}
-            // username={this.props.human.name}
-            // bio={this.props.human.bio}
-            // dogName={this.props.doggos.dogName}
-            // size={this.props.doggos.size}
-            // energy={this.props.doggos.energyLevel}
-            // dogBio={this.props.doggos.dogBio}
-            // distanceAway={this.props.something}
+            newMatch={this.state.user1.name}
+            yesClick={this.yesButton}
+            noClick={this.noButton}
           />
         </div>
 

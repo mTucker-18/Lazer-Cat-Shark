@@ -11,6 +11,7 @@ class SignIn extends Component {
     password: '',
     redirectTo: null
   }
+
   onSubmit = () => {
     const url = '/sign-in';
     const data = {
@@ -46,7 +47,6 @@ class SignIn extends Component {
     this.setState({
       email: value,
     });
-    console.log('getting a new email:', value);
   }
 
   onPasswordChange = (ev) => {
@@ -54,8 +54,8 @@ class SignIn extends Component {
     this.setState({
       password: value,
     });
-    console.log('getting a new password:', value);
   }
+  
   render() {
     if (this.state.redirectTo) {
             return <Redirect to={this.state.redirectTo} render={(props) =>
