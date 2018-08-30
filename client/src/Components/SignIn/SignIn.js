@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './SignIn.css';
-
+import { Switch, Route } from 'react-router-dom';
 import Button from '../Button/button.js';
 
 class SignIn extends Component {
   state = {
     email: '',
     password: '',
+    redirectTo: null
   }
   onSubmit = () => {
     const url = '/sign-in';
@@ -33,6 +34,7 @@ class SignIn extends Component {
             redirectTo: '/browse-page'
           })
         }
+        console.log("going to", this.state.redirectTo);
       }
     );
   }
@@ -53,6 +55,9 @@ class SignIn extends Component {
     console.log('getting a new password:', value);
   }
   render() {
+    if (this.state.redirectTo) {
+            return <Route exact path={this.state.redirectTo} />
+        } else {
     return (
       <div className="SignIn">
         <div className="InputFields">
@@ -76,6 +81,7 @@ class SignIn extends Component {
         </div>
       </div>
     );
+  }
   }
 }
 
