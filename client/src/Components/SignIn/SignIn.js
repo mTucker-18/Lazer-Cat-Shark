@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './SignIn.css';
-
+import { Redirect } from 'react-router-dom';
 import Button from '../Button/button.js';
+import Browse from '../Browse/Browse.js';
+
 
 class SignIn extends Component {
   state = {
     email: '',
     password: '',
+    redirectTo: null
   }
 
   onSubmit = () => {
@@ -28,12 +31,13 @@ class SignIn extends Component {
         if (responseData.superSuccessDog) {
           this.props.onSuccessfulSignIn({
             isLoggedIn: true,
-            email: responseData.data.email,
+            data: data,
           })
-          // this.setState({
-          //   redirect('/browse-page');
-          // })
+          this.setState({
+            redirectTo: '/browse/'
+          })
         }
+        console.log("going to", this.state.redirectTo);
       }
     );
   }
@@ -53,6 +57,12 @@ class SignIn extends Component {
   }
   
   render() {
+    if (this.state.redirectTo) {
+            return <Redirect to={this.state.redirectTo} render={(props) =>
+              <Browse {...props}
+              isLoggedIn={this.state.isLoggedIn} />
+            } />
+        } else {
     return (
       <div className="SignIn">
         <div className="InputFields">
@@ -66,6 +76,7 @@ class SignIn extends Component {
             </h2>
             <h2>password: {this.props.name}
             <input
+              type="password"
               placeholder="enter your password"
               value={this.props.password}
               onChange={this.onPasswordChange}
@@ -75,6 +86,7 @@ class SignIn extends Component {
         </div>
       </div>
     );
+  }
   }
 }
 
