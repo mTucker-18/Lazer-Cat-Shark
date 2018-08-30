@@ -7,22 +7,23 @@ class SignUp extends Component {
     email: '',
     password: '',
     address: '',
-    //geoCoord: '',
-    radius: '',
+    //latitude: '',
+    //longitude: '',
     bio: '',
     dog_name: '',
     dog_size: '',
     dog_energy: '',
   }
 
-  saveToSignUp = () => {
+  saveToSignUp = (latitude, longitude) => {
     const url = '/sign-up';
     const data = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       address: this.state.address,
-      radius: this.state.radius,
+      latitude: latitude,
+      longitude: longitude,
       likes: [],
       likedBy: [],
       bio: this.state.bio,
@@ -76,8 +77,10 @@ class SignUp extends Component {
   }
   
   onGeoAddress = () => {
+    
+  //let latitude= results[0].geometry.location.lat();
 
-    console.log('button working')
+    
     let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
     console.log('this is the search parameters:', addressWithPlusSigns)
 
@@ -85,7 +88,11 @@ class SignUp extends Component {
       .then(response => response.json())
       .then(data => {
         console.log("got data:", data);
-        this.saveToSignup();
+        let latitude = data.results[0].geometry.location.lat;
+        let longitude = data.results[0].geometry.location.lng;
+        console.log("latitude:", latitude, longitude);
+        this.saveToSignUp(latitude, longitude);
+        
       });
   }
 //results[""0""].geometry.location
