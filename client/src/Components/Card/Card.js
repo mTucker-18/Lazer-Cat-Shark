@@ -8,7 +8,7 @@ class Card extends Component {
       <div className='Card'>
 
         <div className="Card--image">
-          <img src={""} alt="pictureProp" />
+          <img src={this.props.picture} alt="" />
         </div>
         <div className="Card--text">
           <p>new match name: {this.props.newMatch} </p>

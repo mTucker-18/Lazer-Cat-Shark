@@ -12,7 +12,7 @@ class SignIn extends Component {
     redirectTo: null
   }
 
-  onSubmit = () => {
+  onSignIn = () => {
     const url = '/sign-in';
     const data = {
       email: this.state.email,
@@ -37,6 +37,9 @@ class SignIn extends Component {
             redirectTo: '/browse/'
           })
         }
+        // else {
+        //   alert("Uh oh! Unsuccessful login. Try again.")
+        // }
         console.log("going to", this.state.redirectTo);
       }
     );
@@ -55,7 +58,7 @@ class SignIn extends Component {
       password: value,
     });
   }
-  
+
   render() {
     if (this.state.redirectTo) {
             return <Redirect to={this.state.redirectTo} render={(props) =>
@@ -82,7 +85,7 @@ class SignIn extends Component {
               onChange={this.onPasswordChange}
             />
             </h2>
-          <Button onClick={this.onSubmit}>sign in</Button>
+          <Button onClick={this.onSignIn}>sign in</Button>
         </div>
       </div>
     );
