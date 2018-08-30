@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './SignIn.css';
-import { Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Button from '../Button/button.js';
+import Browse from '../Browse/Browse.js';
+
 
 class SignIn extends Component {
   state = {
@@ -31,7 +33,7 @@ class SignIn extends Component {
             data: data,
           })
           this.setState({
-            redirectTo: '/browse-page'
+            redirectTo: '/browse/'
           })
         }
         console.log("going to", this.state.redirectTo);
@@ -56,7 +58,10 @@ class SignIn extends Component {
   }
   render() {
     if (this.state.redirectTo) {
-            return <Route exact path={this.state.redirectTo} />
+            return <Redirect to={this.state.redirectTo} render={(props) =>
+              <Browse {...props}
+              isLoggedIn={this.state.isLoggedIn} />
+            } />
         } else {
     return (
       <div className="SignIn">
