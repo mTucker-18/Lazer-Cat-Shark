@@ -15,7 +15,7 @@ class SignUp extends Component {
     dog_energy: '',
   }
 
-  onSubmit = () => {
+  saveToSignUp = () => {
     const url = '/sign-up';
     const data = {
       name: this.state.name,
@@ -30,6 +30,7 @@ class SignUp extends Component {
       dog_size: this.state.dog_size,
       dog_energy: this.state.dog_energy,
     };
+    
     fetch(url, {
       method: "POST",
       headers: {
@@ -38,8 +39,12 @@ class SignUp extends Component {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
-    //call geocoding method
-    this.onGeoAddress()
+    .then(data => {
+        // AFTER save is here
+        console.log('save was successful!', data);
+    });
+    
+    
   }
 
   onNameChange = (ev) => {
@@ -72,17 +77,17 @@ class SignUp extends Component {
 
   onGeoAddress = () => {
 
-  console.log('button working')
-  let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
-  console.log('this is the search parameters:', addressWithPlusSigns)
+    console.log('button working')
+    let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
+    console.log('this is the search parameters:', addressWithPlusSigns)
 
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
-    .then(response => response.json())
-    .then(data => {
-      console.log("got data:", data);
-      /////////
+      .then(response => response.json())
+      .then(data => {
+        console.log("got data:", data);
+        this.saveToSignup();
       });
-    }
+  }
 //results[""0""].geometry.location
 
   onPictureChange = (ev) => {
@@ -121,7 +126,7 @@ class SignUp extends Component {
       <div className="SignUp">
         <div className="InputFields">
           <h1 className="SignUp--title">join us to find friends for your doggos!</h1>
-          <form action="/browse">
+         
             <h2>your name: {this.props.username}
               <input
                 name="name"
@@ -196,8 +201,8 @@ class SignUp extends Component {
                 onChange={this.onDogEnergyChange}
               />
             </h2>
-            <Button onClick={this.onSubmit}>sign up</Button>
-          </form>
+            <Button onClick={this.onGeoAddress}>sign up</Button>
+          
         </div>
       </div>
     );
