@@ -25,17 +25,46 @@ app.use(passport.initialize());
 app.use(passport.session()); // calls serializeUser and deserializeUser
 
 // post request to sign in
+// app.post('/sign-in', (req, res) => {
+//   console.log('user signin');
+//   let data = {
+//     email: req.body.email,
+//     password: req.body.password
+//   };
+//   db.collection('users').find({email: data.email}, (err, data) => {
+//     if (err) throw err;
+//     res.json(data);
+    // if (!data) {
+    //   console.log('noooooooo')
+    // }
+//     else {
+//       res.json({
+//         message: 'good job, you did it!',
+//         superSuccessDog: true,
+//         email: req.body.email
+//   });
+// }
+  // res.end();
+// });
+// }
+
 app.post('/sign-in', (req, res) => {
   console.log('user signin');
-  req.session.username = req.body.email;
-
-  // maybe we want to do a DB query for more info here?
-  res.json({
-    message: "good job, you did it!",
-    superSuccessDog: true,
-    email: req.body.email
-  })
-  //res.end();
+  let data = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  db.collection('users').find({email: data.email}).toArray(
+    (err, data) => {
+      if (err) throw err;
+      console.log("hello", data.email);
+      res.json({
+              message: 'good job, you did it!',
+              superSuccessDog: true,
+              email: req.body.email
+        });
+    }
+  )
 });
 
 // get request finds all users at splash page - should likely be changed to browse page
@@ -50,7 +79,6 @@ app.get('/', (req, res) => {
 
 // post request inserts user
 app.post('/sign-up', (req, res) => {
-  console.log('this is body', req.body);
   let data = {
     email: req.body.email,
     password: req.body.password,
