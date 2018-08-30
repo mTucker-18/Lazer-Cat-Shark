@@ -55,6 +55,7 @@ app.post('/sign-up', (req, res) => {
     password: req.body.password,
     name: req.body.name,
     address: req.body.address,
+    //geo_coord:
     radius: req.body.radius,
     likes: [],
     likedBy: [],
@@ -75,6 +76,7 @@ app.post('/user-page', (req, res) => {
   console.log('this is more body', req.body);
   let data = {
     address: req.body.address,
+    //geo_coord: 
     radius: req.body.radius,
     dog_name: req.body.dog_name,
     dog_size: req.body.dog_size,

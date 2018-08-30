@@ -7,6 +7,7 @@ class SignUp extends Component {
     email: '',
     password: '',
     address: '',
+    //geoCoord: '',
     radius: '',
     bio: '',
     dog_name: '',
@@ -37,6 +38,8 @@ class SignUp extends Component {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
+    //call geocoding method
+    this.onGeoAddress()
   }
 
   onNameChange = (ev) => {
@@ -66,6 +69,22 @@ class SignUp extends Component {
       address: value,
     });
   }
+  
+  onGeoAddress = () => {
+
+  console.log('button working')
+  let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
+  console.log('this is the search parameters:', addressWithPlusSigns)
+
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
+    .then(response => response.json())
+    .then(data => {
+      console.log("got data:", data);
+      /////////
+      });
+    }
+//results[""0""].geometry.location
+  
   onRadiusChange = (ev) => {
     let value = ev.target.value;
     this.setState({
