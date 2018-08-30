@@ -14,6 +14,10 @@
   padding: 5px;
 }
 
+.Card--image {
+
+}
+
 .PawButtons {
   display: flex;
   justify-content: space-around;
