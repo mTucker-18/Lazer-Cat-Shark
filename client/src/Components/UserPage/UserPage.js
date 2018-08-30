@@ -267,8 +267,8 @@ class UserPage extends Component {
           <h1>my dog information</h1>
           <div className="DisplayInfo--fields">
             <h2>name: {this.state.doggos.dogName}</h2>
-            <h2>email: {this.state.doggos.size}</h2>
-            <h2>address: {this.state.doggos.energyLevel}</h2>
+            <h2>size: {this.state.doggos.size}</h2>
+            <h2>energy level: {this.state.doggos.energyLevel}</h2>
             <h2>bio: {this.state.doggos.dogBio}</h2>
           </div>
         </div>
