@@ -23,8 +23,10 @@ class Card extends Component {
         </div>
 
         <div className="PawButtons">
-          <PawButton />
-          <PawButton />
+          <PawButton
+            buttonText="yaw" />
+          <PawButton
+            buttonText="naw"/>
         </div>
 
       </div>
