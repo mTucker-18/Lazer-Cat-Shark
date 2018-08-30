@@ -39,14 +39,10 @@ class Browse extends Component {
   }
 
   changeMatch = () => {
-    console.log("current match: ", this.state.current_match);
     let new_match = this.state.list_of_users[1].user2.name;
-    console.log(new_match);
-
     this.setState({
       current_match: new_match,
     });
-    console.log("new match: ", this.state.current_match);
   }
 
   yesButton = () => {
