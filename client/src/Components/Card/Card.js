@@ -8,7 +8,7 @@ class Card extends Component {
       <div className='Card'>
 
         <div className="Card--image">
-          <img src={"../../media/small_dog.png"} alt="pictureProp" />
+          <img src={""} alt="pictureProp" />
         </div>
         <div className="Card--text">
           <h4><b>nameProp: Jane Doe</b></h4>

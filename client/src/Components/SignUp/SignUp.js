@@ -8,7 +8,7 @@ class SignUp extends Component {
     password: '',
     address: '',
     //geoCoord: '',
-    radius: '',
+    picture: '',
     bio: '',
     dog_name: '',
     dog_size: '',
@@ -22,7 +22,7 @@ class SignUp extends Component {
       email: this.state.email,
       password: this.state.password,
       address: this.state.address,
-      radius: this.state.radius,
+      picture: this.state.picture,
       likes: [],
       likedBy: [],
       bio: this.state.bio,
@@ -69,7 +69,7 @@ class SignUp extends Component {
       address: value,
     });
   }
-  
+
   onGeoAddress = () => {
 
   console.log('button working')
@@ -84,11 +84,11 @@ class SignUp extends Component {
       });
     }
 //results[""0""].geometry.location
-  
-  onRadiusChange = (ev) => {
+
+  onPictureChange = (ev) => {
     let value = ev.target.value;
     this.setState({
-      radius: value,
+      picture: value,
     });
   }
   onBioChange = (ev) => {
@@ -156,18 +156,18 @@ class SignUp extends Component {
               />
             </h2>
             <h3>(only you can see this)</h3>
-            <h2>how close should dog friends be? {this.props.radius}
+            <h2>picture of you and your doggo: {this.props.picture}
               <input
-                name="radius"
-                placeholder="miles"
-                value={this.props.radius}
-                onChange={this.onRadiusChange}
+                type="file"
+                placeholder="dog-pic"
+                value={this.props.picture}
+                onChange={this.onPictureChange}
               />
             </h2>
-            <h2>tell us about you and your dog: {this.props.bio}
+            <h2>tell us about your dog: {this.props.bio}
               <textarea
                 name="bio"
-                placeholder="Likes, dislikes, etc."
+                placeholder="likes, dislikes, etc."
                 value={this.props.bio}
                 onChange={this.onBioChange}
               />
@@ -175,7 +175,7 @@ class SignUp extends Component {
             <h2>dog name: {this.props.dog_name}
               <input
                 name="dog_name"
-                placeholder="Dog name"
+                placeholder="dog name"
                 value={this.props.dog_name}
                 onChange={this.onDogNameChange}
               />
@@ -183,7 +183,7 @@ class SignUp extends Component {
             <h2>dog size: {this.props.dog_size}
               <input
                 name="dog_size"
-                placeholder="Small, medium, or large"
+                placeholder="small, medium, or large"
                 value={this.props.dog_size}
                 onChange={this.onDogSizeChange}
               />
@@ -191,7 +191,7 @@ class SignUp extends Component {
             <h2>dog energy level: {this.props.dog_energy}
               <input
                 name="dog_energy"
-                placeholder="Peaceful, super active, etc."
+                placeholder="calm, bursts, or overactive?"
                 value={this.props.dog_energy}
                 onChange={this.onDogEnergyChange}
               />
