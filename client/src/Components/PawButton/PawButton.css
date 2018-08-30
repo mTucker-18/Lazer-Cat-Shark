@@ -1,13 +1,16 @@
 .PawButton {
-  background: #fff2d8;
-  background-image: linear-gradient(to bottom, #246A73, #DEF2C8);
+
+
+  background: #dafeff;
+
   border-radius: 20px;
-  text-shadow: 3px 2px 1px #9daef5;
   box-shadow: 6px 5px 24px #666666;
   font-family: 'Lobster', cursive;
   text-align: right;
   font-size: 15px;
-  color: #007755;
+
+  color: var(--dark-green);
+
   padding: 10px;
   width: 70px;
   margin: 10px;
