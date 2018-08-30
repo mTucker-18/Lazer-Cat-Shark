@@ -56,6 +56,8 @@ app.post('/sign-up', (req, res) => {
     password: req.body.password,
     name: req.body.name,
     address: req.body.address,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
     radius: req.body.radius,
     likes: [],
     likedBy: [],

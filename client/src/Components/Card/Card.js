@@ -17,12 +17,16 @@ class Card extends Component {
           <p><b>dogNameProp: Ruffers</b></p>
           <p>dogSizeProp: hudge!</p>
           <p>dogEnergyProp: insanely ennergetic</p>
-          <p>dogBioProp: Ruffers is a great dog, cept he poops everywhere... and i mean EVERYWHERE!!! if we hang out you-ll probably get poo-ed on</p>
+          <p>dogBioProp: Ruffers is a great dog, cept he poops
+           everywhere... and i mean EVERYWHERE!!! if we hang out you-ll probably get poo-ed on</p>
+           //Prop for distance of user away from browser
         </div>
 
         <div className="PawButtons">
-          <PawButton />
-          <PawButton />
+          <PawButton
+            buttonText="yaw" />
+          <PawButton
+            buttonText="naw"/>
         </div>
 
       </div>

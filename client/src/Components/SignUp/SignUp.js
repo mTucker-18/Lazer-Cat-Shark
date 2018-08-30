@@ -7,21 +7,23 @@ class SignUp extends Component {
     email: '',
     password: '',
     address: '',
-    radius: '',
+    //latitude: '',
+    //longitude: '',
     bio: '',
     dog_name: '',
     dog_size: '',
     dog_energy: '',
   }
 
-  onSubmit = () => {
+  saveToSignUp = (latitude, longitude) => {
     const url = '/sign-up';
     const data = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       address: this.state.address,
-      radius: this.state.radius,
+      latitude: latitude,
+      longitude: longitude,
       likes: [],
       likedBy: [],
       bio: this.state.bio,
@@ -29,6 +31,7 @@ class SignUp extends Component {
       dog_size: this.state.dog_size,
       dog_energy: this.state.dog_energy,
     };
+    
     fetch(url, {
       method: "POST",
       headers: {
@@ -37,6 +40,12 @@ class SignUp extends Component {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
+    .then(data => {
+        // AFTER save is here
+        console.log('save was successful!', data);
+    });
+    
+    
   }
 
   onNameChange = (ev) => {
@@ -66,6 +75,28 @@ class SignUp extends Component {
       address: value,
     });
   }
+  
+  onGeoAddress = () => {
+    
+  //let latitude= results[0].geometry.location.lat();
+
+    
+    let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
+    console.log('this is the search parameters:', addressWithPlusSigns)
+
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("got data:", data);
+        let latitude = data.results[0].geometry.location.lat;
+        let longitude = data.results[0].geometry.location.lng;
+        console.log("latitude:", latitude, longitude);
+        this.saveToSignUp(latitude, longitude);
+        
+      });
+  }
+//results[""0""].geometry.location
+  
   onRadiusChange = (ev) => {
     let value = ev.target.value;
     this.setState({
@@ -102,7 +133,7 @@ class SignUp extends Component {
       <div className="SignUp">
         <div className="InputFields">
           <h1 className="SignUp--title">join us to find friends for your doggos!</h1>
-          <form action="/browse">
+         
             <h2>your name: {this.props.username}
               <input
                 name="name"
@@ -177,8 +208,8 @@ class SignUp extends Component {
                 onChange={this.onDogEnergyChange}
               />
             </h2>
-            <Button onClick={this.onSubmit}>sign up</Button>
-          </form>
+            <Button onClick={this.onGeoAddress}>sign up</Button>
+          
         </div>
       </div>
     );
