@@ -11,22 +11,18 @@ class Card extends Component {
           <img src={""} alt="pictureProp" />
         </div>
         <div className="Card--text">
-          <h4><b>nameProp: Jane Doe</b></h4>
-          <p>bioProp: Architect & Engineer</p>
-          <p>more bioProp: Cool and stuff, propably good at things</p>
-          <p><b>dogNameProp: Ruffers</b></p>
-          <p>dogSizeProp: hudge!</p>
-          <p>dogEnergyProp: insanely ennergetic</p>
-          <p>dogBioProp: Ruffers is a great dog, cept he poops
-           everywhere... and i mean EVERYWHERE!!! if we hang out you-ll probably get poo-ed on</p>
-           //Prop for distance of user away from browser
+          <p>new match name: {this.props.newMatch} </p>
         </div>
 
         <div className="PawButtons">
           <PawButton
-            buttonText="yaw" />
+            buttonText="yaw"
+            onClick={this.props.yesClick}
+          />
           <PawButton
-            buttonText="naw"/>
+            buttonText="naw"
+            onClick={this.props.noClick}
+          />
         </div>
 
       </div>
