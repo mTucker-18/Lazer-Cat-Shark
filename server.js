@@ -33,6 +33,7 @@ app.post('/sign-in', (req, res) => {
   res.json({
     message: "good job, you did it!",
     superSuccessDog: true,
+    email: req.body.email
   })
   //res.end();
 });

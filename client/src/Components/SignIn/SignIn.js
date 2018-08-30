@@ -27,11 +27,11 @@ class SignIn extends Component {
         if (responseData.superSuccessDog) {
           this.props.onSuccessfulSignIn({
             isLoggedIn: true,
-            email: responseData.data.email,
+            data: data,
           })
-          // this.setState({
-          //   redirect('/browse-page');
-          // })
+          this.setState({
+            redirectTo: '/browse-page'
+          })
         }
       }
     );
@@ -66,6 +66,7 @@ class SignIn extends Component {
             </h2>
             <h2>password: {this.props.name}
             <input
+              type="password"
               placeholder="enter your password"
               value={this.props.password}
               onChange={this.onPasswordChange}
