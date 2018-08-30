@@ -13,20 +13,9 @@ class App extends Component {
   state = {
     isLoggedIn: false,
     human : {
-      searchRadius: '',
       name: '',
       email: '',
       password: '',
-      address:'',
-      bio: '',
-      likes: [],
-      likedBy: []
-    },
-    doggos : {
-      name: '',
-      size: '',
-      energyLevel: '',
-      bio: '',
     }
   }
   // Set user's logged in state here
@@ -46,29 +35,25 @@ class App extends Component {
           <Route exact path='/' component={Splash} />
           <Route exact path='/sign-up/' render={(props) =>
             <SignUp {...props}
-              username={this.state.name}
-              email={this.state.email}
-              password={this.state.password} />
+              username={this.state.human.name}
+              email={this.state.human.email}
+              password={this.state.human.password}
+               />
           } />
           <Route exact path='/sign-in/' render={(props) =>
             <SignIn {...props}
               onSuccessfulSignIn={this.setLoggedIn}
               email={this.state.email}
-              password={this.state.password} />
+              password={this.state.password}
+
+              />
           } />
           <Route exact path='/user-page/' render={(props) =>
             <UserPage {...props}
               isLoggedIn={this.state.isLoggedIn}
-              searchRadius={this.state.searchRadius}
               name={this.state.name}
               email={this.state.email}
-              password={this.state.password}
-              address={this.state.address}
-              bio={this.state.bio}
-              dogName={this.state.dogName}
-              size={this.state.size}
-              energyLevel={this.state.energyLevel}
-              dogBio={this.state.dogBio} />
+              password={this.state.password} />
           } />
             // <Route path="/browse/" component={Browse} />
             <Route exact path='/browse/' render={(props) =>
