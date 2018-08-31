@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/button.js';
 import Card from '../Card/Card.js';
 import './Browse.css';
+import Modal from '../Modal/modal.js';
 
 const haversine = require('haversine');
 
@@ -23,10 +24,10 @@ class Browse extends Component {
     let myAddress = {latitude: 37.8241591, longitude: -122.2799876};
     let theirAddress = {latitude: 37.8476842, longitude: -122.2811626};
     let distanceAway = haversine(myAddress, theirAddress);
-    return distanceAway;
     console.log(myAddress);
     console.log(theirAddress);
     console.log('haversine', distanceAway);
+    return distanceAway;
   }
 
   yesButton = () => {
@@ -94,7 +95,10 @@ class Browse extends Component {
           onClick={this.distanceCalc}>
           New Match
         </Button>
-
+        <Modal
+          show={this.state.currentModal}>
+          Congratulation, You have a match!
+        </Modal>
         <div className="CardDisplay">
           <Card
             newMatchName={this.state.match_name}
