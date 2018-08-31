@@ -68,7 +68,7 @@ app.post('/sign-in', (req, res) => {
 });
 
 // get request finds all users at splash page - should likely be changed to browse page
-app.get('/', (req, res) => {
+app.get('/browse', (req, res) => {
   db.collection('users').find({}).toArray(
     (err, data) => {
       if (err) throw err;

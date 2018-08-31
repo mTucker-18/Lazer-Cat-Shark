@@ -72,6 +72,20 @@ class Browse extends Component {
   noButton = () => {
     console.log("no button works")
   }
+  newCard = () => {
+    const url = '/browse';
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(response => {
+      console.log('get was successful', response[0])
+    }
+    )}
 
   render () {
     return (
@@ -90,6 +104,11 @@ class Browse extends Component {
             <Button>log out</Button>
           </Link>
         </div>
+
+        <Button
+          onClick={this.newCard}>
+          New Match
+        </Button>
 
         <div className="CardDisplay">
           <Card
