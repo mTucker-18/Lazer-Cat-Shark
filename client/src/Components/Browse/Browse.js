@@ -6,41 +6,13 @@ import './Browse.css';
 
 class Browse extends Component {
   state = {
+    next_index: 0,
     match_name: null,
     location: null,
     bio: null,
     dog_name: null,
     dog_size: null,
     dog_energy: null,
-    // human: {
-    //   name: "steve",
-    //   likes: [],
-    //   isLikedBy: ["jill", "bob"],
-    // },
-    // list_of_users: [
-    //   {
-    //     user1: {
-    //       name: "jill",
-    //       picture: "../../media/small_dog_small.png",
-    //       likes: ["steve", "bob"],
-    //       isLikedBy: ["bob"],
-    //     }
-    //   },
-    //   {
-    //     user2: {
-    //       name: "bob",
-    //       likes: ["steve", "jill"],
-    //       isLikedBy: ["jill"],
-    //     }
-    //   },
-    //   {
-    //     user3: {
-    //       name: "sam",
-    //       likes: [],
-    //       isLikedBy: [],
-    //     }
-    //   },
-    // ]
   }
 
 
@@ -69,6 +41,7 @@ class Browse extends Component {
   }
   newCard = () => {
     const url = '/browse';
+    let new_index = this.state.next_index + 1;
 
     fetch(url, {
       method: "GET",
@@ -78,16 +51,19 @@ class Browse extends Component {
     })
     .then(response => response.json())
     .then(response => {
+      // for each item in the response array
+      // take response at index number and increment
       console.log('get was successful', response)
-      console.log('get was successful', response[0])
-      console.log('human name', response[0].human_name)
+      console.log('get was successful', response[this.state.next_index])
+      console.log('human name', response[this.state.next_index].human_name)
       this.setState({
-        match_name: response[0].human_name,
+        match_name: response[this.state.next_index].human_name,
         location: null,
-        bio: response[0].human_bio,
-        dog_name: response[0].dog_name,
-        dog_size: response[0].dog_size,
-        dog_energy: response[0].dog_energy,
+        bio: response[this.state.next_index].human_bio,
+        dog_name: response[this.state.next_index].dog_name,
+        dog_size: response[this.state.next_index].dog_size,
+        dog_energy: response[this.state.next_index].dog_energy,
+        next_index: new_index,
       })
       console.log("state", this.state)
     }
@@ -118,7 +94,12 @@ class Browse extends Component {
 
         <div className="CardDisplay">
           <Card
-            newMatch={this.state.match_name}
+            newMatchName={this.state.match_name}
+            newMatchLocation={this.state.location}
+            newMatchBio={this.state.bio}
+            newMatchDogName={this.state.dog_name}
+            newMatchDogSize={this.state.dog_size}
+            newMatchDogEnergy={this.state.dog_energy}
             yesClick={this.yesButton}
             noClick={this.noButton}
           />
