@@ -3,12 +3,40 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/button.js';
 import Card from '../Card/Card.js';
 import './Browse.css';
-import Modal from '../Modal/modal.js';
+import Modal from 'react-modal';
+
+// import Modal from '../Modal/modal.js';
 
 const haversine = require('haversine');
 
 class Browse extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      modalIsOpen: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
   state = {
+    modalIsOpen: false,
     next_index: 0,
     match_name: null,
     match_latitude: null,
@@ -90,15 +118,24 @@ class Browse extends Component {
             <Button>log out</Button>
           </Link>
         </div>
+        <div className="Modal">
+          <button onClick={this.openModal}>Open Modal</button>
+          <Modal className="Modal"
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+          >
+          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+          <div className="Modal">I am a modal</div>
+            <button className="Modal" onClick={
+                this.closeModal}>close</button>
+          </Modal>
+        </div>
 
         <Button
           onClick={this.distanceCalc}>
           New Match
         </Button>
-        <Modal
-          show={this.state.currentModal}>
-          Congratulation, You have a match!
-        </Modal>
         <div className="CardDisplay">
           <Card
             newMatchName={this.state.match_name}
