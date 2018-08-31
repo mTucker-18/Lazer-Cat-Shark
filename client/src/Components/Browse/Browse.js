@@ -8,13 +8,20 @@ class Browse extends Component {
   state = {
     next_index: 0,
     match_name: null,
-    location: null,
+    match_latitude: null,
+    match_longitude: null,
     bio: null,
     dog_name: null,
     dog_size: null,
     dog_energy: null,
   }
 
+  distanceCalc = (latitude, longitude) => {
+    let myAddress = (latitude, longitude); //current user's lat and lng
+    let theirAddress = (latitude, longitude); //match user's lat and lng
+    let distanceAway = haversine(myAddress, theirAddress, {unit: 'mile'})
+    return distanceAway;
+  }
 
   yesButton = () => {
     const url = '/browse';
@@ -29,8 +36,6 @@ class Browse extends Component {
     .then(console.log('CAPS LOCK'));
     // this.newCard();
   }
-
-
 
   noButton = () => {
     this.newCard();
@@ -49,7 +54,8 @@ class Browse extends Component {
     .then(response => {
       this.setState({
         match_name: response[this.state.next_index].human_name,
-        location: null,
+        latitude: response[this.state.next_index].latitude,
+        longitude: response[this.state.next_index].longitude,
         bio: response[this.state.next_index].human_bio,
         dog_name: response[this.state.next_index].dog_name,
         dog_size: response[this.state.next_index].dog_size,
@@ -57,6 +63,7 @@ class Browse extends Component {
         next_index: new_index,
       })
     }
+    distanceCalc(latitude, longitude);
   )}
 
   render () {
@@ -85,7 +92,8 @@ class Browse extends Component {
         <div className="CardDisplay">
           <Card
             newMatchName={this.state.match_name}
-            newMatchLocation={this.state.location}
+            newMatchDistance=distanceAway
+            newMatchLongitude={this.state.longitude}
             newMatchBio={this.state.bio}
             newMatchDogName={this.state.dog_name}
             newMatchDogSize={this.state.dog_size}
