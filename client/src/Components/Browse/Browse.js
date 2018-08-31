@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import Button from '../Button/button.js';
 import Card from '../Card/Card.js';
+// import Modal from '../Modal/modal.js'
+
 import './Browse.css';
 import Modal from 'react-modal';
 
@@ -48,19 +51,20 @@ class Browse extends Component {
   }
 
   distanceCalc = () => {
-    console.log('hello');
-    let myAddress = {latitude: 37.8241591, longitude: -122.2799876};
-    let theirAddress = {latitude: 37.8476842, longitude: -122.2811626};
-    let distanceAway = haversine(myAddress, theirAddress);
-    console.log(myAddress);
-    console.log(theirAddress);
-    console.log('haversine', distanceAway);
+
+    console.log('haversine starting');
+    const start = {latitude: 37.8241591, longitude: -122.2799876};
+    console.log(start);
+    const end = {latitude: 37.8476842, longitude: -122.2811626};
+    console.log(end);
+    let distanceAway = haversine(start, end, {unit:'mile'});
+    console.log('distance away in miles: ', distanceAway);
+
     return distanceAway;
   }
 
   yesButton = () => {
     const url = '/browse';
-
     fetch(url, {
       method: "POST",
       headers: {
@@ -101,10 +105,21 @@ class Browse extends Component {
     // distanceCalc(latitude, longitude);
   )}
 
+  // showModal = () => {
+  //   this.setState({
+  //     showModal: true,
+  //   });
+  // }
+  //
+  // hideModal = () => {
+  //   this.setState({
+  //     showModal: false,
+  //   });
+  // }
+
   render () {
     return (
       <div className='Browse'>
-
         <div className='Browse--title'>
           <h1>find a doggo friend</h1>
         </div>

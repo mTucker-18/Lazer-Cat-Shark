@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './modal.css';
 
 class Modal extends Component {
+
   constructor() {
     super();
 
@@ -41,6 +42,7 @@ class Modal extends Component {
           <div>I am a modal</div>
           <button onClick={this.closeModal}>close</button>
         </Modal>
+
       </div>
     );
   }
