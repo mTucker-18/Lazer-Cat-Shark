@@ -4,6 +4,8 @@ import Button from '../Button/button.js';
 import Card from '../Card/Card.js';
 import './Browse.css';
 
+const haversine = require('haversine');
+
 class Browse extends Component {
   state = {
     next_index: 0,
@@ -16,11 +18,15 @@ class Browse extends Component {
     dog_energy: null,
   }
 
-  distanceCalc = (latitude, longitude) => {
-    let myAddress = (latitude, longitude); //current user's lat and lng
-    let theirAddress = (latitude, longitude); //match user's lat and lng
-    let distanceAway = haversine(myAddress, theirAddress, {unit: 'mile'})
+  distanceCalc = () => {
+    console.log('hello');
+    let myAddress = {latitude: 37.8241591, longitude: -122.2799876};
+    let theirAddress = {latitude: 37.8476842, longitude: -122.2811626};
+    let distanceAway = haversine(myAddress, theirAddress);
     return distanceAway;
+    console.log(myAddress);
+    console.log(theirAddress);
+    console.log('haversine', distanceAway);
   }
 
   yesButton = () => {
@@ -63,7 +69,7 @@ class Browse extends Component {
         next_index: new_index,
       })
     }
-    distanceCalc(latitude, longitude);
+    // distanceCalc(latitude, longitude);
   )}
 
   render () {
@@ -85,14 +91,14 @@ class Browse extends Component {
         </div>
 
         <Button
-          onClick={this.newCard}>
+          onClick={this.distanceCalc}>
           New Match
         </Button>
 
         <div className="CardDisplay">
           <Card
             newMatchName={this.state.match_name}
-            newMatchDistance=distanceAway
+            // newMatchDistance=distanceAway
             newMatchLongitude={this.state.longitude}
             newMatchBio={this.state.bio}
             newMatchDogName={this.state.dog_name}
