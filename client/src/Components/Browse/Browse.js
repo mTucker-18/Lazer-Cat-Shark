@@ -6,48 +6,43 @@ import './Browse.css';
 
 class Browse extends Component {
   state = {
-    current_match: "jill",
-    human: {
-      name: "steve",
-      likes: [],
-      isLikedBy: ["jill", "bob"],
-    },
-    list_of_users: [
-      {
-        user1: {
-          name: "jill",
-          picture: "../../media/small_dog_small.png",
-          likes: ["steve", "bob"],
-          isLikedBy: ["bob"],
-        }
-      },
-      {
-        user2: {
-          name: "bob",
-          likes: ["steve", "jill"],
-          isLikedBy: ["jill"],
-        }
-      },
-      {
-        user3: {
-          name: "sam",
-          likes: [],
-          isLikedBy: [],
-        }
-      },
-    ]
+    match_name: null,
+    location: null,
+    bio: null,
+    dog_name: null,
+    dog_size: null,
+    dog_energy: null,
+    // human: {
+    //   name: "steve",
+    //   likes: [],
+    //   isLikedBy: ["jill", "bob"],
+    // },
+    // list_of_users: [
+    //   {
+    //     user1: {
+    //       name: "jill",
+    //       picture: "../../media/small_dog_small.png",
+    //       likes: ["steve", "bob"],
+    //       isLikedBy: ["bob"],
+    //     }
+    //   },
+    //   {
+    //     user2: {
+    //       name: "bob",
+    //       likes: ["steve", "jill"],
+    //       isLikedBy: ["jill"],
+    //     }
+    //   },
+    //   {
+    //     user3: {
+    //       name: "sam",
+    //       likes: [],
+    //       isLikedBy: [],
+    //     }
+    //   },
+    // ]
   }
 
-  changeMatch = () => {
-    console.log("current match: ", this.state.current_match);
-    let new_match = this.state.list_of_users[1].user2.name;
-    console.log(new_match);
-
-    this.setState({
-      current_match: new_match,
-    });
-    console.log("new match: ", this.state.current_match);
-  }
 
   yesButton = () => {
     console.log("people who like jill: ", this.state.list_of_users[0].user1.isLikedBy);
@@ -66,7 +61,7 @@ class Browse extends Component {
     });
     console.log("people who like jill now: ", this.state.list_of_users[0].user1.isLikedBy);
 
-    this.changeMatch();
+    this.newCard();
   }
 
   noButton = () => {
@@ -83,7 +78,18 @@ class Browse extends Component {
     })
     .then(response => response.json())
     .then(response => {
+      console.log('get was successful', response)
       console.log('get was successful', response[0])
+      console.log('human name', response[0].human_name)
+      this.setState({
+        match_name: response[0].human_name,
+        location: null,
+        bio: response[0].human_bio,
+        dog_name: response[0].dog_name,
+        dog_size: response[0].dog_size,
+        dog_energy: response[0].dog_energy,
+      })
+      console.log("state", this.state)
     }
     )}
 
@@ -112,7 +118,7 @@ class Browse extends Component {
 
         <div className="CardDisplay">
           <Card
-            newMatch={this.state.current_match}
+            newMatch={this.state.match_name}
             yesClick={this.yesButton}
             noClick={this.noButton}
           />
