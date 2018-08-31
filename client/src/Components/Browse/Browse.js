@@ -17,27 +17,23 @@ class Browse extends Component {
 
 
   yesButton = () => {
-    console.log("people who like jill: ", this.state.list_of_users[0].user1.isLikedBy);
-    let old_likedBy = this.state.list_of_users[0].user1.isLikedBy;
-    let user_displayed = this.state.human.name;
-    let new_likedBy = old_likedBy.push(user_displayed);
+    const url = '/browse';
 
-    this.setState({
-      list_of_users: [
-        {
-          user1: {
-            isLikedBy: new_likedBy,
-          }
-        }
-      ]
-    });
-    console.log("people who like jill now: ", this.state.list_of_users[0].user1.isLikedBy);
-
-    this.newCard();
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(console.log('CAPS LOCK'));
+    // this.newCard();
   }
 
+
+
   noButton = () => {
-    console.log("no button works")
+    this.newCard();
   }
   newCard = () => {
     const url = '/browse';
@@ -51,11 +47,6 @@ class Browse extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      // for each item in the response array
-      // take response at index number and increment
-      console.log('get was successful', response)
-      console.log('get was successful', response[this.state.next_index])
-      console.log('human name', response[this.state.next_index].human_name)
       this.setState({
         match_name: response[this.state.next_index].human_name,
         location: null,
@@ -65,9 +56,8 @@ class Browse extends Component {
         dog_energy: response[this.state.next_index].dog_energy,
         next_index: new_index,
       })
-      console.log("state", this.state)
     }
-    )}
+  )}
 
   render () {
     return (

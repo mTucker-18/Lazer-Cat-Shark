@@ -77,6 +77,9 @@ app.get('/browse', (req, res) => {
     });
 });
 
+app.post('/browse', (req, res) => {
+  db.collection('users').update({human_name: this.state.human_name},{$push{ likes: [this.state.human_name]}})
+})
 // post request inserts user
 app.post('/sign-up', (req, res) => {
   let data = {
