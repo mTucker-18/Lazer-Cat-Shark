@@ -55,7 +55,6 @@ class App extends Component {
               email={this.state.email}
               password={this.state.password} />
           } />
-            // <Route path="/browse/" component={Browse} />
             <Route exact path='/browse/' render={(props) =>
               <Browse {...props}
               isLoggedIn={this.state.isLoggedIn} />

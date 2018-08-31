@@ -27,7 +27,7 @@ class SignIn extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-        console.log("response", responseData);
+        // console.log("response", responseData);
         if (responseData.superSuccessDog) {
           this.props.onSuccessfulSignIn({
             isLoggedIn: true,
@@ -37,10 +37,10 @@ class SignIn extends Component {
             redirectTo: '/browse/'
           })
         }
-        // else {
-        //   alert("Uh oh! Unsuccessful login. Try again.")
-        // }
-        console.log("going to", this.state.redirectTo);
+        else {
+          alert("Uh oh! Unsuccessful login. Try again.")
+        }
+        // console.log("going to", this.state.redirectTo);
       }
     );
   }
@@ -61,27 +61,24 @@ class SignIn extends Component {
 
   render() {
     if (this.state.redirectTo) {
-            return <Redirect to={this.state.redirectTo} render={(props) =>
-              <Browse {...props}
-              isLoggedIn={this.state.isLoggedIn} />
-            } />
-        } else {
+      return <Redirect to={this.state.redirectTo} render={(props) =>
+        <Browse {...props} isLoggedIn={this.state.isLoggedIn} />
+      } />
+    } else {
     return (
       <div className="SignIn">
         <div className="InputFields">
           <h1 className="SignIn--title">woof! welcome back</h1>
-            <h2>email: {this.props.email}
+            <h2>email:
             <input
               placeholder="enter your email"
-              value={this.props.email}
               onChange={this.onEmailChange}
             />
             </h2>
-            <h2>password: {this.props.name}
+            <h2>password:
             <input
               type="password"
               placeholder="enter your password"
-              value={this.props.password}
               onChange={this.onPasswordChange}
             />
             </h2>

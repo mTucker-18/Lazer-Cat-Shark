@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './modal.css';
 
 class Modal extends Component {
-  listenKeyboard(event) {
+  listenKeyboard = (event) => {
     if (event.key === 'Escape' || event.keyCode === 27) {
       this.props.onClose();
     }
@@ -28,17 +28,17 @@ class Modal extends Component {
     event.stopPropagation();
   }
 
-render(){
-return (
-  <div>
-    <div className="modal-overlay-div" style={this.overlayStyle} />
-    <div className="modal-content-div" style={this.contentStyle} onClick={this.onOverlayClick.bind(this)}>
-      <div className="modal-dialog-div" style={this.dialogStyle} onClick={this.onDialogClick}>
-        {this.props.children}
+  render () {
+    return (
+      <div>
+        <div className="modal-overlay-div" style={this.overlayStyle} />
+        <div className="modal-content-div" style={this.contentStyle} onClick={this.onOverlayClick.bind(this)}>
+          <div className="modal-dialog-div" style={this.dialogStyle} onClick={this.onDialogClick}>
+            {this.props.children}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-);
-}
+    );
+  }
 }
 export default Modal;
