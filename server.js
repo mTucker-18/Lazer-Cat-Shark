@@ -68,7 +68,7 @@ app.post('/sign-in', (req, res) => {
 });
 
 // get request finds all users at splash page - should likely be changed to browse page
-app.get('/', (req, res) => {
+app.get('/browse', (req, res) => {
   db.collection('users').find({}).toArray(
     (err, data) => {
       if (err) throw err;
@@ -77,6 +77,9 @@ app.get('/', (req, res) => {
     });
 });
 
+app.post('/browse', (req, res) => {
+  db.collection('users').update({human_name: this.state.human_name},{$push{ likes: [this.state.human_name]}})
+})
 // post request inserts user
 app.post('/sign-up', (req, res) => {
   let data = {

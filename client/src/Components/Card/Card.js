@@ -11,7 +11,12 @@ class Card extends Component {
           <img src={this.props.picture} alt="" />
         </div>
         <div className="Card--text">
-          <p>new match name: {this.props.newMatch} </p>
+          <p>name: {this.props.newMatchName} </p>
+          <p>proximity: {this.props.newMatchLocation} </p>
+          <p>bio: {this.props.newMatchBio} </p>
+          <p>dog name: {this.props.newMatchDogName} </p>
+          <p>dog size: {this.props.newMatchDogSize} </p>
+          <p>energy: {this.props.newMatchDogEnergy} </p>
         </div>
 
         <div className="PawButtons">

@@ -7,83 +7,72 @@ import Card from '../Card/Card.js';
 
 import './Browse.css';
 
+const haversine = require('haversine');
+
 class Browse extends Component {
   state = {
-    showModal: false,
-    current_match: "jill",
-    human: {
-      name: "steve",
-      likes: ["george", "paula"],
-      isLikedBy: ["jill", "bob"],
-    },
-    list_of_users: [
-      {
-        user1: {
-          name: "jill",
-          email: "jillerson@jilleroni.com",
-          picture: "../../media/small_dog_small.png",
-          likes: ["steve", "bob"],
-          isLikedBy: ["bob"],
-        }
-      },
-      {
-        user2: {
-          name: "bob",
-          likes: ["steve", "jill"],
-          isLikedBy: ["jill"],
-        }
-      },
-      {
-        user3: {
-          name: "sam",
-          likes: [],
-          isLikedBy: [],
-        }
-      },
-    ]
+    next_index: 0,
+    match_name: null,
+    match_latitude: null,
+    match_longitude: null,
+    bio: null,
+    dog_name: null,
+    dog_size: null,
+    dog_energy: null,
   }
 
-  friendCheck = () => {
-    console.log('friend check working');
-    let myName = this.state.human.name;
-    let isLikedBy = this.state.list_of_users[0].user1.likes;
-
-    if (isLikedBy.includes(myName)) {
-      alert("woof! found a match! email: " + this.state.list_of_users[0].user1.email);
-    }
-  }
-
-  changeMatch = () => {
-    let new_match = this.state.list_of_users[1].user2.name;
-    this.setState({
-      current_match: new_match,
-    });
+  distanceCalc = () => {
+    console.log('hello');
+    let myAddress = {latitude: 37.8241591, longitude: -122.2799876};
+    let theirAddress = {latitude: 37.8476842, longitude: -122.2811626};
+    let distanceAway = haversine(myAddress, theirAddress);
+    return distanceAway;
+    console.log(myAddress);
+    console.log(theirAddress);
+    console.log('haversine', distanceAway);
   }
 
   yesButton = () => {
-    console.log("people who like jill: ", this.state.list_of_users[0].user1.isLikedBy);
-    let old_likedBy = this.state.list_of_users[0].user1.isLikedBy;
-    let user_displayed = this.state.human.name;
-    let new_likedBy = old_likedBy.push(user_displayed);
-
-    this.setState({
-      list_of_users: [
-        {
-          user1: {
-            isLikedBy: new_likedBy,
-          }
-        }
-      ]
-    });
-    console.log("people who like jill now: ", this.state.list_of_users[0].user1.isLikedBy);
-
-    this.friendCheck();
-    this.changeMatch();
+    const url = '/browse';
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(console.log('CAPS LOCK'));
+    // this.newCard();
   }
 
   noButton = () => {
-    console.log("no button works")
+    this.newCard();
   }
+  newCard = () => {
+    const url = '/browse';
+    let new_index = this.state.next_index + 1;
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(response => {
+      this.setState({
+        match_name: response[this.state.next_index].human_name,
+        latitude: response[this.state.next_index].latitude,
+        longitude: response[this.state.next_index].longitude,
+        bio: response[this.state.next_index].human_bio,
+        dog_name: response[this.state.next_index].dog_name,
+        dog_size: response[this.state.next_index].dog_size,
+        dog_energy: response[this.state.next_index].dog_energy,
+        next_index: new_index,
+      })
+    }
+    // distanceCalc(latitude, longitude);
+  )}
 
   // showModal = () => {
   //   this.setState({
@@ -114,9 +103,20 @@ class Browse extends Component {
           </Link>
         </div>
 
+        <Button
+          onClick={this.distanceCalc}>
+          New Match
+        </Button>
+
         <div className="CardDisplay">
           <Card
-            newMatch={this.state.current_match}
+            newMatchName={this.state.match_name}
+            // newMatchDistance=distanceAway
+            newMatchLongitude={this.state.longitude}
+            newMatchBio={this.state.bio}
+            newMatchDogName={this.state.dog_name}
+            newMatchDogSize={this.state.dog_size}
+            newMatchDogEnergy={this.state.dog_energy}
             yesClick={this.yesButton}
             noClick={this.noButton}
           />
