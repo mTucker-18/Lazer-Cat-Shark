@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Button from '../Button/button.js';
 import Card from '../Card/Card.js';
-// import Modal from '../Modal/modal.js'
 
 import './Browse.css';
 
@@ -12,6 +11,7 @@ const haversine = require('haversine');
 class Browse extends Component {
   state = {
     next_index: 0,
+    modalIsOpen: false,
     match_name: null,
     match_latitude: null,
     match_longitude: null,
@@ -74,17 +74,15 @@ class Browse extends Component {
     // distanceCalc(latitude, longitude);
   )}
 
-  // showModal = () => {
-  //   this.setState({
-  //     showModal: true,
-  //   });
-  // }
-  //
-  // hideModal = () => {
-  //   this.setState({
-  //     showModal: false,
-  //   });
-  // }
+  openModal = () => {
+    console.log('modal opening');
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal = () => {
+    console.log('modal closing');
+    this.setState({modalIsOpen: false});
+  }
 
   render () {
     return (

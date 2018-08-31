@@ -2,43 +2,23 @@ import React, { Component } from 'react';
 import './modal.css';
 
 class Modal extends Component {
-  listenKeyboard = (event) => {
-    if (event.key === 'Escape' || event.keyCode === 27) {
-      this.props.onClose();
-    }
-  }
 
-  componentDidMount() {
-    if (this.props.onClose) {
-      window.addEventListener('keydown', this.listenKeyboard.bind(this), true);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.onClose) {
-      window.removeEventListener('keydown', this.listenKeyboard.bind(this), true);
-    }
-  }
-
-  onOverlayClick() {
-    this.props.onClose();
-  }
-
-  onDialogClick(event) {
-    event.stopPropagation();
-  }
-
-  render () {
-    return (
-      <div>
-        <div className="modal-overlay-div" style={this.overlayStyle} />
-        <div className="modal-content-div" style={this.contentStyle} onClick={this.onOverlayClick.bind(this)}>
-          <div className="modal-dialog-div" style={this.dialogStyle} onClick={this.onDialogClick}>
-            {this.props.children}
-          </div>
-        </div>
-      </div>
-    );
-  }
+ render() {
+   return (
+     <div className="Modal">
+       <button onClick={this.openModal}>Open Modal</button>
+       <Modal
+         isOpen={this.props.modalIsOpen}
+         onRequestClose={this.closeModal}
+         contentLabel="Example Modal"
+       >
+         <h2>Hello</h2>
+         <div>I am a modal</div>
+         <button onClick={this.closeModal}>close</button>
+       </Modal>
+     </div>
+   );
+ }
 }
+
 export default Modal;
