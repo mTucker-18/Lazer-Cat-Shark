@@ -2,43 +2,50 @@ import React, { Component } from 'react';
 import './modal.css';
 
 class Modal extends Component {
-  listenKeyboard = (event) => {
-    if (event.key === 'Escape' || event.keyCode === 27) {
-      this.props.onClose();
-    }
+
+  constructor() {
+    super();
+
+    this.state = {
+      modalIsOpen: false
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.onClose) {
-      window.addEventListener('keydown', this.listenKeyboard.bind(this), true);
-    }
+  openModal() {
+    this.setState({modalIsOpen: true});
   }
 
-  componentWillUnmount() {
-    if (this.props.onClose) {
-      window.removeEventListener('keydown', this.listenKeyboard.bind(this), true);
-    }
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
   }
 
-  onOverlayClick() {
-    this.props.onClose();
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
-  onDialogClick(event) {
-    event.stopPropagation();
-  }
-
-  render () {
+  render() {
     return (
-      <div>
-        <div className="modal-overlay-div" style={this.overlayStyle} />
-        <div className="modal-content-div" style={this.contentStyle} onClick={this.onOverlayClick.bind(this)}>
-          <div className="modal-dialog-div" style={this.dialogStyle} onClick={this.onDialogClick}>
-            {this.props.children}
-          </div>
-        </div>
+      <div className="Modal">
+        <button onClick={this.openModal}>Open Modal</button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+          <div>I am a modal</div>
+          <button onClick={this.closeModal}>close</button>
+        </Modal>
+
       </div>
     );
   }
 }
+
 export default Modal;
