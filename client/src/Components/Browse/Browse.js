@@ -22,14 +22,14 @@ class Browse extends Component {
   }
 
   distanceCalc = () => {
-    console.log('hello');
-    let myAddress = {latitude: 37.8241591, longitude: -122.2799876};
-    let theirAddress = {latitude: 37.8476842, longitude: -122.2811626};
-    let distanceAway = haversine(myAddress, theirAddress);
+    console.log('haversine starting');
+    const start = {latitude: 37.8241591, longitude: -122.2799876};
+    console.log(start);
+    const end = {latitude: 37.8476842, longitude: -122.2811626};
+    console.log(end);
+    let distanceAway = haversine(start, end, {unit:'mile'});
+    console.log('distance away in miles: ', distanceAway);
     return distanceAway;
-    console.log(myAddress);
-    console.log(theirAddress);
-    console.log('haversine', distanceAway);
   }
 
   yesButton = () => {
