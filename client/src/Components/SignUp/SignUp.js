@@ -34,7 +34,7 @@ class SignUp extends Component {
       dog_size: this.state.dog_size,
       dog_energy: this.state.dog_energy,
     };
-    
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -47,8 +47,8 @@ class SignUp extends Component {
         // AFTER save is here
         console.log('save was successful!', data);
     });
-    
-    
+
+
   }
 
   onNameChange = (ev) => {
@@ -80,10 +80,10 @@ class SignUp extends Component {
   }
 
   onGeoAddress = () => {
-    
+
   //let latitude= results[0].geometry.location.lat();
 
-    
+
     let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
     console.log('this is the search parameters:', addressWithPlusSigns)
 
@@ -95,7 +95,7 @@ class SignUp extends Component {
         let longitude = data.results[0].geometry.location.lng;
         console.log("latitude:", latitude, longitude);
         this.saveToSignUp(latitude, longitude);
-        
+
       });
   }
 //results[""0""].geometry.location
@@ -123,7 +123,6 @@ class SignUp extends Component {
     this.setState({
       dog_size: value,
     });
-    console.log(value);
   }
   onDogEnergyChange = (ev) => {
     let value = ev.target.value;
@@ -136,83 +135,83 @@ class SignUp extends Component {
       <div className="SignUp">
         <div className="InputFields">
           <h1 className="SignUp--title">join us to find friends for your doggos!</h1>
-         
-            <h2>your name: {this.props.username}
+
+            <h2>your name:
               <input
                 name="name"
                 placeholder="enter your name"
-                value={this.props.username}
+                value={this.state.username}
                 onChange={this.onNameChange}
               />
             </h2>
-            <h2>your email: {this.props.email}
+            <h2>your email:
               <input
                 name="email"
                 placeholder="enter your email"
-                value={this.props.email}
+                value={this.state.email}
                 onChange={this.onEmailChange}
               />
             </h2>
-            <h2>password: {this.props.password}
+            <h2>password:
               <input
                 type="password"
                 name="password"
                 placeholder="create a password"
-                value={this.props.password}
+                value={this.state.password}
                 onChange={this.onPasswordChange}
               />
             </h2>
-            <h2>your address: {this.props.address}
+            <h2>your address:
               <input
                 name="address"
                 placeholder="create a password"
-                value={this.props.address}
+                value={this.state.address}
                 onChange={this.onAddressChange}
               />
             </h2>
             <h3>(only you can see this)</h3>
-            <h2>picture of you and your doggo: {this.props.picture}
+            <h2>picture of you and your doggo:
               <input
                 type="file"
                 placeholder="dog-pic"
-                value={this.props.picture}
+                value={this.state.picture}
                 onChange={this.onPictureChange}
               />
             </h2>
-            <h2>tell us about your dog: {this.props.bio}
+            <h2>tell us about your dog:
               <textarea
                 name="bio"
                 placeholder="likes, dislikes, etc."
-                value={this.props.bio}
+                value={this.state.bio}
                 onChange={this.onBioChange}
               />
             </h2>
-            <h2>dog name: {this.props.dog_name}
+            <h2>dog name:
               <input
                 name="dog_name"
                 placeholder="dog name"
-                value={this.props.dog_name}
+                value={this.state.dog_name}
                 onChange={this.onDogNameChange}
               />
             </h2>
-            <h2>dog size: {this.props.dog_size}
+            <h2>dog size:
               <input
                 name="dog_size"
                 placeholder="small, medium, or large"
-                value={this.props.dog_size}
+                value={this.state.dog_size}
                 onChange={this.onDogSizeChange}
               />
             </h2>
-            <h2>dog energy level: {this.props.dog_energy}
+            <h2>dog energy level:
               <input
                 name="dog_energy"
                 placeholder="calm, bursts, or overactive?"
-                value={this.props.dog_energy}
+                value={this.state.dog_energy}
                 onChange={this.onDogEnergyChange}
               />
             </h2>
             <Button onClick={this.onGeoAddress}>sign up</Button>
-          
+
         </div>
       </div>
     );
