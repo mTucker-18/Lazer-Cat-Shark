@@ -25,11 +25,29 @@
   grid-column: 3;
   grid-row: 2;
 }
-.Browse--Modal {
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right:-50%;
-    transform: translate(-50%, -50%);
-  }
+
+.Modal {
+
+}
+
+.Modal--body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: var(--light-green);
+  top: 40%;
+  left: 40%;
+  height: 200px;
+  width: 400px;
+}
+
+.Modal--title {
+  color: var(--dark-blue);
+  font-family: 'Lobster', cursive;
+}
+
+.Modal--button {
+  height: 100px;
+  width: 100px;
+}
