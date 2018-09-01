@@ -9,8 +9,8 @@ class SignUp extends Component {
     address: '',
     // geoCoord: '',
     picture: '',
-    // latitude: '',
-    // longitude: '',
+    latitude: '',
+    longitude: '',
     bio: '',
     dog_name: '',
     dog_size: '',
@@ -80,12 +80,8 @@ class SignUp extends Component {
   }
 
   onGeoAddress = () => {
-
   //let latitude= results[0].geometry.location.lat();
-
-
     let addressWithPlusSigns = this.state.address.replace(/ /g, '+');
-    console.log('this is the search parameters:', addressWithPlusSigns)
 
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
       .then(response => response.json())
@@ -93,7 +89,6 @@ class SignUp extends Component {
         console.log("got data:", data);
         let latitude = data.results[0].geometry.location.lat;
         let longitude = data.results[0].geometry.location.lng;
-        console.log("latitude:", latitude, longitude);
         this.saveToSignUp(latitude, longitude);
 
       });
@@ -154,7 +149,6 @@ class SignUp extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-        console.log("response", responseData);
         this.setState({
           redirectTo: '/browse/'
         });
@@ -244,7 +238,6 @@ class SignUp extends Component {
                 onChange={this.onDogEnergyChange}
               />
             </h2>
-            <Button onClick={this.onGeoAddress}>location</Button>
             <Button onClick={this.onSignUp}>sign up</Button>
         </div>
       </div>
