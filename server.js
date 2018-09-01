@@ -90,7 +90,6 @@ app.post('/sign-up', (req, res) => {
     address: req.body.address,
     latitude: req.body.latitude,
     longitude: req.body.longitude,
-    radius: req.body.radius,
     likes: [],
     likedBy: [],
     dog_name: req.body.dog_name,
