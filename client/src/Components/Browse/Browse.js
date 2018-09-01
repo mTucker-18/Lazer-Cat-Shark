@@ -38,8 +38,8 @@ class Browse extends Component {
     modalIsOpen: false,
     next_index: 0,
     match_name: null,
-    match_latitude: null,
-    match_longitude: null,
+    latitude: null,
+    longitude: null,
     distanceAway: null,
     bio: null,
     dog_name: null,
@@ -60,15 +60,18 @@ class Browse extends Component {
   }
 
   distanceCalc = () => {
-
+    const lat = this.state.latitude;
+    const lng = this.state.longitude;
     console.log('haversine starting');
-    const start = {latitude: 37.8241591, longitude: -122.2799876};
+    const start = {latitude: 37.807053, longitude: -122.269864};
     console.log(start);
-    const end = {latitude: 37.8476842, longitude: -122.2811626};
-    console.log(end);
+    const end = {latitude: lat, longitude: lng};
+    console.log('end', end);
     let distanceAway = haversine(start, end, {unit:'mile'});
     console.log('distance away in miles: ', distanceAway);
-    return distanceAway;
+    console.log('hello', distanceAway)
+    console.log("friend is ", this.state.distanceAway)
+    return distanceAway
   }
 
   yesButton = () => {
@@ -101,9 +104,9 @@ class Browse extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      console.log(response[0])
+      console.log(response[this.state.next_index])
       console.log(this.state.next_index)
-
+      let distance = this.distanceCalc();
       this.setState({
         match_name: response[this.state.next_index].name,
         latitude: response[this.state.next_index].latitude,
@@ -116,8 +119,9 @@ class Browse extends Component {
         distanceAway: this.state.distanceAway
       })
     }
-    // distanceCalc(latitude, longitude);
-  )}
+  )
+
+}
 
   render () {
     return (
@@ -162,7 +166,7 @@ class Browse extends Component {
         <div className="CardDisplay">
           <Card
             newMatchName={this.state.match_name}
-            // newMatchDistance=distanceAway
+            newMatchDistance={this.state.distanceAway}
             newMatchLongitude={this.state.longitude}
             newMatchBio={this.state.bio}
             newMatchDogName={this.state.dog_name}

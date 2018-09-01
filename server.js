@@ -139,13 +139,13 @@ app.post('/user-page', (req, res) => {
   // )
 // })
 
-const MONGODB_URL = 'mongodb://fetchrapp:tuckerhienmaddycat4@ds233452.mlab.com:33452/lazer-cat-shark';
-const MONGODB_DATABASE = 'fetchrapp';
-const PORT = 3001;
-
-// const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
-// const MONGODB_DATABASE = 'fetchr';
+// const MONGODB_URL = 'mongodb://fetchrapp:tuckerhienmaddycat4@ds233452.mlab.com:33452/lazer-cat-shark';
+// const MONGODB_DATABASE = 'fetchrapp';
 // const PORT = 3001;
+
+const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
+const MONGODB_DATABASE = 'fetchr';
+const PORT = 3001;
 //
 //
 MongoClient.connect(MONGODB_URL, { useNewUrlParser: true }, (err, client) => {
