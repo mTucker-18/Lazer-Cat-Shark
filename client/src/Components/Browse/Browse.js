@@ -1,43 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 
 import Button from '../Button/button.js';
 import Card from '../Card/Card.js';
-// import Modal from '../Modal/modal.js'
 
 import './Browse.css';
-import Modal from 'react-modal';
-
-// import Modal from '../Modal/modal.js';
 
 const haversine = require('haversine');
 
 class Browse extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      modalIsOpen: false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
-  }
-
   state = {
     modalIsOpen: false,
     next_index: 0,
@@ -50,6 +22,19 @@ class Browse extends Component {
     dog_energy: null,
   }
 
+  openModal = () => {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal = () => {
+    this.setState({modalIsOpen: false});
+  }
+
   distanceCalc = () => {
 
     console.log('haversine starting');
@@ -59,7 +44,6 @@ class Browse extends Component {
     console.log(end);
     let distanceAway = haversine(start, end, {unit:'mile'});
     console.log('distance away in miles: ', distanceAway);
-
     return distanceAway;
   }
 
@@ -69,16 +53,18 @@ class Browse extends Component {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
-      },
-    })
+        },
+      })
     .then(response => response.json())
     .then(console.log('CAPS LOCK'));
+
     // this.newCard();
   }
 
   noButton = () => {
     this.newCard();
   }
+
   newCard = () => {
     const url = '/browse';
     let new_index = this.state.next_index + 1;
@@ -91,11 +77,14 @@ class Browse extends Component {
     })
     .then(response => response.json())
     .then(response => {
+      console.log(response[0])
+      console.log(this.state.next_index)
+
       this.setState({
-        match_name: response[this.state.next_index].human_name,
+        match_name: response[this.state.next_index].name,
         latitude: response[this.state.next_index].latitude,
         longitude: response[this.state.next_index].longitude,
-        bio: response[this.state.next_index].human_bio,
+        bio: response[this.state.next_index].bio,
         dog_name: response[this.state.next_index].dog_name,
         dog_size: response[this.state.next_index].dog_size,
         dog_energy: response[this.state.next_index].dog_energy,
@@ -104,18 +93,6 @@ class Browse extends Component {
     }
     // distanceCalc(latitude, longitude);
   )}
-
-  // showModal = () => {
-  //   this.setState({
-  //     showModal: true,
-  //   });
-  // }
-  //
-  // hideModal = () => {
-  //   this.setState({
-  //     showModal: false,
-  //   });
-  // }
 
   render () {
     return (
@@ -148,7 +125,8 @@ class Browse extends Component {
         </div>
 
         <Button
-          onClick={this.distanceCalc}>
+          // onClick={this.distanceCalc}>
+          onClick={this.newCard}>
           New Match
         </Button>
         <div className="CardDisplay">

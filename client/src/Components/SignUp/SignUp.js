@@ -130,6 +130,40 @@ class SignUp extends Component {
       dog_energy: value,
     });
   }
+
+  onSignUp = () => {
+    const url = '/sign-up';
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+      address: this.state.address,
+      likes: [],
+      likedBy: [],
+      dog_name: this.state.dog_name,
+      dog_size: this.state.dog_size,
+      dog_energy: this.state.dog_energy,
+      bio: this.state.bio
+    };
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        console.log("response", responseData);
+        this.setState({
+          redirectTo: '/browse/'
+        });
+        // console.log("going to", this.state.redirectTo);
+      }
+    );
+  }
+
+
   render() {
     return (
       <div className="SignUp">
@@ -210,8 +244,8 @@ class SignUp extends Component {
                 onChange={this.onDogEnergyChange}
               />
             </h2>
-            <Button onClick={this.onGeoAddress}>sign up</Button>
-
+            <Button onClick={this.onGeoAddress}>location</Button>
+            <Button onClick={this.onSignUp}>sign up</Button>
         </div>
       </div>
     );
