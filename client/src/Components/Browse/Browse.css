@@ -25,11 +25,11 @@
   grid-column: 3;
   grid-row: 2;
 }
-.Modal {
-    top                   : '50%';
-    left                  : '50%';
-    right                 : 'auto';
-    bottom                : 'auto';
-    marginRight           : '-50%';
-    transform             : 'translate(-50%, -50%)';
+.Browse--Modal {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right:-50%;
+    transform: translate(-50%, -50%);
   }
