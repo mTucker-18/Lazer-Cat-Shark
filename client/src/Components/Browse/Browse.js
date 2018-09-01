@@ -40,7 +40,7 @@ class Browse extends Component {
     match_name: null,
     latitude: null,
     longitude: null,
-    distanceAway: null,
+    // distanceAway: null,
     bio: null,
     dog_name: null,
     dog_size: null,
@@ -70,7 +70,9 @@ class Browse extends Component {
     let distanceAway = haversine(start, end, {unit:'mile'});
     console.log('distance away in miles: ', distanceAway);
     console.log('hello', distanceAway)
-    console.log("friend is ", this.state.distanceAway)
+    this.setState({
+      distanceAway: distanceAway
+    })
     return distanceAway
   }
 
@@ -106,7 +108,6 @@ class Browse extends Component {
     .then(response => {
       console.log(response[this.state.next_index])
       console.log(this.state.next_index)
-      let distance = this.distanceCalc();
       this.setState({
         match_name: response[this.state.next_index].name,
         latitude: response[this.state.next_index].latitude,
@@ -116,7 +117,6 @@ class Browse extends Component {
         dog_size: response[this.state.next_index].dog_size,
         dog_energy: response[this.state.next_index].dog_energy,
         next_index: new_index,
-        distanceAway: this.state.distanceAway
       })
     }
   )
@@ -157,9 +157,14 @@ class Browse extends Component {
             </Button>
           </Modal>
         </div>
-
         <Button
-          // onClick={this.distanceCalc}>
+          onClick={this.distanceCalc}
+          >
+          See More
+        </Button>
+        <Button
+          // onClick={this.distanceCalc}
+          // >
           onClick={this.newCard}>
           New Match
         </Button>
