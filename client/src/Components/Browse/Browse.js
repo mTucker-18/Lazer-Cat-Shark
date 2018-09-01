@@ -22,13 +22,12 @@ class Browse extends Component {
     dog_energy: null,
   }
 
-  openModal = () => {
-    this.setState({modalIsOpen: true});
+  componentWillMount = () => {
+      Modal.setAppElement('body');
   }
 
-  afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+  openModal = () => {
+    this.setState({modalIsOpen: true});
   }
 
   closeModal = () => {
@@ -111,16 +110,19 @@ class Browse extends Component {
           </Link>
         </div>
         <div className="Modal">
-          <button onClick={this.openModal}>Open Modal</button>
-          <Modal className="Modal"
+
+          <Modal className="Modal--body"
             isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
           >
-          <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-          <div className="Modal">I am a modal</div>
-            <button className="Modal" onClick={
-                this.closeModal}>close</button>
+
+          <h3 className="Modal--title">woof! you have a match!</h3>
+            <Button
+              className="Modal--button"
+              onClick={this.closeModal}
+            >
+              close
+            </Button>
           </Modal>
         </div>
 
