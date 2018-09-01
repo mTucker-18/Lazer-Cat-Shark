@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PawButton from '../PawButton/PawButton.js';
+import Button from '../Button/button.js';
 import './Card.css';
 
 class Card extends Component {
@@ -12,7 +13,7 @@ class Card extends Component {
         </div>
         <div className="Card--text">
           <p>name: {this.props.newMatchName} </p>
-          <p>proximity: {this.props.newMatchLocation} </p>
+          <Button className="ProxButton" onClick={this.props.onClick}><p>proximity: {this.props.distanceAway} </p></Button>
           <p>bio: {this.props.newMatchBio} </p>
           <p>dog name: {this.props.newMatchDogName} </p>
           <p>dog size: {this.props.newMatchDogSize} </p>
