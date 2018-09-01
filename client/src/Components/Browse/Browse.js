@@ -177,7 +177,7 @@ class Browse extends Component {
             newMatchDogName={this.state.dog_name}
             newMatchDogSize={this.state.dog_size}
             newMatchDogEnergy={this.state.dog_energy}
-            yesClick={this.yesButton}
+            yesClick={this.openModal}
             noClick={this.noButton}
           />
         </div>
