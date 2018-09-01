@@ -36,7 +36,6 @@ class UserPage extends Component {
     this.setState({
       name: value,
     });
-    console.log('getting a new name:', value);
   }
 
   onEmailChange = (ev) => {
@@ -44,7 +43,6 @@ class UserPage extends Component {
     this.setState({
       email: value,
     });
-    console.log('getting a new email:', value);
   }
 
   onPasswordChange = (ev) => {
@@ -52,7 +50,6 @@ class UserPage extends Component {
     this.setState({
       password: value,
     });
-    console.log('getting a new password:', value);
   }
 
   onAddressChange = (ev) => {
@@ -63,14 +60,10 @@ class UserPage extends Component {
         address: value,
         },
     });
-    console.log('getting a new address:', this.state.human.address);
   }
 
   onGeoAddress = () => {
-
-  console.log('button working')
   let addressWithPlusSigns = this.state.human.address.replace(/ /g, '+');
-  console.log('this is the search parameters:', addressWithPlusSigns)
 
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressWithPlusSigns}&key=AIzaSyDfpGRTicou6rN_3Zsct8ipCKVBM-E_TTc`)
     .then(response => response.json())
@@ -87,7 +80,6 @@ class UserPage extends Component {
     this.setState({
       bio: value,
     });
-    console.log('getting a new bio:', value);
   }
 
   ondogNameChange = (ev) => {
@@ -95,7 +87,6 @@ class UserPage extends Component {
     this.setState({
       dogName: value,
     });
-    console.log('getting a doggy name:', value);
   }
 
   onSizeChange = (ev) => {
@@ -103,7 +94,6 @@ class UserPage extends Component {
     this.setState({
       size: value,
     });
-    console.log('getting a new password:', value);
   }
 
   onEnergyLevelChange = (ev) => {
@@ -111,7 +101,6 @@ class UserPage extends Component {
     this.setState({
       energyLevel: value,
     });
-    console.log('getting energy level:', value);
   }
 
   ondogBioChange = (ev) => {
@@ -119,7 +108,6 @@ class UserPage extends Component {
     this.setState({
       dogBio: value,
     });
-    console.log('getting a new dog bio:', value);
   }
 
   toggleLearnMore = () => {
