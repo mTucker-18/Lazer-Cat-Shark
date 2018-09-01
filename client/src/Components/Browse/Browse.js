@@ -8,14 +8,39 @@ import Card from '../Card/Card.js';
 import './Browse.css';
 
 const haversine = require('haversine');
+const customStyles = {
+  content : {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
 
 class Browse extends Component {
+
+  openModal = () => {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal = () => {
+    this.setState({modalIsOpen: false});
+  }
+
   state = {
     modalIsOpen: false,
     next_index: 0,
     match_name: null,
     match_latitude: null,
     match_longitude: null,
+    distanceAway: null,
     bio: null,
     dog_name: null,
     dog_size: null,
@@ -88,6 +113,7 @@ class Browse extends Component {
         dog_size: response[this.state.next_index].dog_size,
         dog_energy: response[this.state.next_index].dog_energy,
         next_index: new_index,
+        distanceAway: this.state.distanceAway
       })
     }
     // distanceCalc(latitude, longitude);
@@ -109,11 +135,13 @@ class Browse extends Component {
             <Button>log out</Button>
           </Link>
         </div>
+
         <div className="Modal">
 
           <Modal className="Modal--body"
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
+            style={customStyles}
           >
 
           <h3 className="Modal--title">woof! you have a match!</h3>
