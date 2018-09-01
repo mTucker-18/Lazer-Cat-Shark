@@ -65,7 +65,7 @@ class Browse extends Component {
     console.log('haversine starting');
     const start = {latitude: 37.807053, longitude: -122.269864};
     console.log(start);
-    const end = {latitude: lat, longitude: lng};
+    const end = {latitude: 37.8023740, longitude: -122.4058178};
     console.log('end', end);
     let distanceAway = haversine(start, end, {unit:'mile'});
     console.log('distance away in miles: ', distanceAway);
@@ -89,12 +89,14 @@ class Browse extends Component {
   }
 
   noButton = () => {
+    console.log('Hello newcard!')
     this.newCard();
   }
 
   newCard = () => {
     const url = '/browse';
     let new_index = this.state.next_index + 1;
+    
 
     fetch(url, {
       method: "GET",
