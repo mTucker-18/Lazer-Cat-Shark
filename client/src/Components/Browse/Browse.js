@@ -16,6 +16,7 @@ class Browse extends Component {
     match_name: null,
     match_latitude: null,
     match_longitude: null,
+    distanceAway: null,
     bio: null,
     dog_name: null,
     dog_size: null,
@@ -89,6 +90,7 @@ class Browse extends Component {
         dog_size: response[this.state.next_index].dog_size,
         dog_energy: response[this.state.next_index].dog_energy,
         next_index: new_index,
+        distanceAway: this.state.distanceAway
       })
     }
     // distanceCalc(latitude, longitude);
