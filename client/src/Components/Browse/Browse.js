@@ -40,7 +40,7 @@ class Browse extends Component {
     match_name: null,
     latitude: null,
     longitude: null,
-    // distanceAway: null,
+    distanceAway: null,
     bio: null,
     dog_name: null,
     dog_size: null,
@@ -73,6 +73,7 @@ class Browse extends Component {
     this.setState({
       distanceAway: distanceAway
     })
+    console.log(this.state.distanceAway);
     return distanceAway
   }
 
@@ -157,11 +158,7 @@ class Browse extends Component {
             </Button>
           </Modal>
         </div>
-        <Button
-          onClick={this.distanceCalc}
-          >
-          See More
-        </Button>
+
         <Button
           // onClick={this.distanceCalc}
           // >
@@ -171,7 +168,8 @@ class Browse extends Component {
         <div className="CardDisplay">
           <Card
             newMatchName={this.state.match_name}
-            newMatchDistance={this.state.distanceAway}
+            onClick={this.distanceCalc}
+            distanceAway={this.state.distanceAway}
             newMatchLongitude={this.state.longitude}
             newMatchBio={this.state.bio}
             newMatchDogName={this.state.dog_name}
