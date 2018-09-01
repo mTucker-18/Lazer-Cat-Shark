@@ -171,7 +171,7 @@ class Browse extends Component {
           <Card
             newMatchName={this.state.match_name}
             onClick={this.distanceCalc}
-            distanceAway={this.state.distanceAway}
+            distanceAway={Math.round(this.state.distanceAway)}
             newMatchLongitude={this.state.longitude}
             newMatchBio={this.state.bio}
             newMatchDogName={this.state.dog_name}
