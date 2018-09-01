@@ -77,9 +77,10 @@ app.get('/browse', (req, res) => {
     });
 });
 
-app.post('/browse', (req, res) => {
-  db.collection('users').update({human_name: this.state.human_name},{$push{ likes: [this.state.human_name]}})
-})
+// app.post('/browse', (req, res) => {
+  // db.collection('users').update({human_name: this.state.human_name},{$push{ likes: [this.state.human_name]}})
+// })
+
 // post request inserts user
 app.post('/sign-up', (req, res) => {
   let data = {
@@ -89,7 +90,6 @@ app.post('/sign-up', (req, res) => {
     address: req.body.address,
     latitude: req.body.latitude,
     longitude: req.body.longitude,
-    radius: req.body.radius,
     likes: [],
     likedBy: [],
     dog_name: req.body.dog_name,
@@ -139,13 +139,13 @@ app.post('/user-page', (req, res) => {
   // )
 // })
 
-// const MONGODB_URL = 'mongodb://<fetchr>:<Rv6zRxd&r<a3:4-j>@ds233452.mlab.com:33452/lazer-cat-shark';
+const MONGODB_URL = 'mongodb://fetchrapp:tuckerhienmaddycat4@ds233452.mlab.com:33452/lazer-cat-shark';
+const MONGODB_DATABASE = 'fetchrapp';
+const PORT = 3001;
+
+// const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
 // const MONGODB_DATABASE = 'fetchr';
 // const PORT = 3001;
-
-const MONGODB_URL = 'mongodb://localhost:27017/fetchr';
-const MONGODB_DATABASE = 'fetchr';
-const PORT = 3001;
 //
 //
 MongoClient.connect(MONGODB_URL, { useNewUrlParser: true }, (err, client) => {

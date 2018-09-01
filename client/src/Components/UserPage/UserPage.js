@@ -123,15 +123,6 @@ class UserPage extends Component {
   }
 
   toggleLearnMore = () => {
-    // if (this.state.isAccordianVisible === false) {
-    //   this.setState({
-    //     isAccordianVisible: true,
-    //   })
-    // } else {
-    //   this.setState({
-    //     isAccordianVisible: false,
-    //   })
-    // }
     this.setState({
       isAccordianVisible: !this.state.isAccordianVisible,
     })
@@ -175,7 +166,7 @@ class UserPage extends Component {
             <h2>address: {this.state.human.address}</h2>
             <h2>bio: {this.state.human.bio}</h2>
           </div>
-          <img src="../../media/small_dog.png" />
+          <img src="../../media/small_dog.png" alt="" />
         </div>
 
         <div className="Toggle">

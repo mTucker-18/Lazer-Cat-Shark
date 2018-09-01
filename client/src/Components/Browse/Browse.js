@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../Button/button.js';
-import Card from '../Card/Card.js';
-import './Browse.css';
 import Modal from 'react-modal';
 
-// import Modal from '../Modal/modal.js';
+import Button from '../Button/button.js';
+import Card from '../Card/Card.js';
+
+import './Browse.css';
 
 const haversine = require('haversine');
 const customStyles = {
@@ -40,40 +40,56 @@ class Browse extends Component {
     match_name: null,
     match_latitude: null,
     match_longitude: null,
+    distanceAway: null,
     bio: null,
     dog_name: null,
     dog_size: null,
     dog_energy: null,
   }
 
+  openModal = () => {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+  }
+
+  closeModal = () => {
+    this.setState({modalIsOpen: false});
+  }
+
   distanceCalc = () => {
-    console.log('hello');
-    let myAddress = {latitude: 37.8241591, longitude: -122.2799876};
-    let theirAddress = {latitude: 37.8476842, longitude: -122.2811626};
-    let distanceAway = haversine(myAddress, theirAddress);
-    console.log(myAddress);
-    console.log(theirAddress);
-    console.log('haversine', distanceAway);
+
+    console.log('haversine starting');
+    const start = {latitude: 37.8241591, longitude: -122.2799876};
+    console.log(start);
+    const end = {latitude: 37.8476842, longitude: -122.2811626};
+    console.log(end);
+    let distanceAway = haversine(start, end, {unit:'mile'});
+    console.log('distance away in miles: ', distanceAway);
     return distanceAway;
   }
 
   yesButton = () => {
     const url = '/browse';
-
     fetch(url, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
-      },
-    })
+        },
+      })
     .then(response => response.json())
     .then(console.log('CAPS LOCK'));
+
     // this.newCard();
   }
 
   noButton = () => {
     this.newCard();
   }
+
   newCard = () => {
     const url = '/browse';
     let new_index = this.state.next_index + 1;
@@ -86,15 +102,19 @@ class Browse extends Component {
     })
     .then(response => response.json())
     .then(response => {
+      console.log(response[0])
+      console.log(this.state.next_index)
+
       this.setState({
-        match_name: response[this.state.next_index].human_name,
+        match_name: response[this.state.next_index].name,
         latitude: response[this.state.next_index].latitude,
         longitude: response[this.state.next_index].longitude,
-        bio: response[this.state.next_index].human_bio,
+        bio: response[this.state.next_index].bio,
         dog_name: response[this.state.next_index].dog_name,
         dog_size: response[this.state.next_index].dog_size,
         dog_energy: response[this.state.next_index].dog_energy,
         next_index: new_index,
+        distanceAway: this.state.distanceAway
       })
     }
     // distanceCalc(latitude, longitude);
@@ -103,7 +123,6 @@ class Browse extends Component {
   render () {
     return (
       <div className='Browse'>
-
         <div className='Browse--title'>
           <h1>find a doggo friend</h1>
         </div>
@@ -133,7 +152,8 @@ class Browse extends Component {
         </div>
 
         <Button
-          onClick={this.distanceCalc}>
+          // onClick={this.distanceCalc}>
+          onClick={this.newCard}>
           New Match
         </Button>
         <div className="CardDisplay">
