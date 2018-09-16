@@ -99,7 +99,7 @@ class Browse extends Component {
   newCard = () => {
     const url = '/browse';
     let new_index = this.state.next_index + 1;
-    
+
 
     fetch(url, {
       method: "GET",
@@ -123,7 +123,6 @@ class Browse extends Component {
       })
     }
   )
-
 }
 
   render () {
